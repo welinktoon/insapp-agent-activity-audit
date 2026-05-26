@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ТЗ: правки страницы страховых компаний Insapp</title>
+  <style>
+    :root {
+      --text: #172033;
+      --muted: #667085;
+      --line: #d7deea;
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --soft: #f8fafc;
+      --blue: #155bd8;
+      --blue-soft: #eef4ff;
+      --orange: #b25b00;
+      --orange-soft: #fff6e6;
+      --green: #087443;
+      --green-soft: #effaf4;
+      --red: #c53030;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 28px auto;
+    }
+
+    header,
+    section {
+      margin-bottom: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 30px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: 22px;
+      line-height: 1.25;
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 17px;
+      line-height: 1.25;
+    }
+
+    a {
+      color: var(--blue);
+    }
+
+    code {
+      padding: 2px 6px;
+      border-radius: 5px;
+      background: #edf1f7;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: .95em;
+    }
+
+    .eyebrow {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .lead {
+      max-width: 900px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .meta-card,
+    .change-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+      padding: 14px;
+    }
+
+    .meta-card span,
+    .change-card span {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(320px, .55fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .screen-wrap {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .screen-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .mark {
+      position: absolute;
+      border: 3px solid var(--red);
+      border-radius: 6px;
+      background: rgba(197, 48, 48, .08);
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, .75);
+    }
+
+    .mark.add {
+      border-style: dashed;
+      border-color: var(--orange);
+      background: rgba(178, 91, 0, .10);
+    }
+
+    .badge {
+      position: absolute;
+      left: -12px;
+      top: -16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+    }
+
+    .mark.add .badge {
+      background: var(--orange);
+    }
+
+    .mark-date {
+      left: 15%;
+      top: 7.6%;
+      width: 59%;
+      height: 3.4%;
+    }
+
+    .mark-address {
+      left: 7.8%;
+      top: 88.2%;
+      width: 84.5%;
+      height: 3.1%;
+    }
+
+    .mark-new {
+      left: 7.8%;
+      top: 91.6%;
+      width: 84.5%;
+      height: 3.2%;
+    }
+
+    .changes {
+      display: grid;
+      gap: 12px;
+    }
+
+    .change-card {
+      background: #fff;
+    }
+
+    .change-card.date {
+      border-left: 4px solid var(--blue);
+      background: var(--blue-soft);
+    }
+
+    .change-card.address {
+      border-left: 4px solid var(--red);
+      background: #fff5f5;
+    }
+
+    .change-card.new-company {
+      border-left: 4px solid var(--orange);
+      background: var(--orange-soft);
+    }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      margin-right: 8px;
+      border-radius: 50%;
+      background: var(--text);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .from-to {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .from,
+    .to {
+      border-radius: 7px;
+      padding: 10px;
+    }
+
+    .from {
+      background: #fff;
+      border: 1px solid #ffd6d6;
+      color: #8f1d1d;
+    }
+
+    .to {
+      background: var(--green-soft);
+      border: 1px solid #bfe8cf;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .note {
+      margin-top: 16px;
+      padding: 14px;
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+
+    @media (max-width: 880px) {
+      main {
+        width: 100%;
+        margin: 0;
+      }
+
+      header,
+      section {
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        padding: 20px 16px;
+      }
+
+      .meta-grid,
+      .board {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Отдельное ТЗ внутри проекта</div>
+      <h1>Правки страницы страховых компаний Insapp</h1>
+      <p class="lead">На скриншоте отмечены места, где нужно внести изменения на странице <a href="https://insapp.ru/companies/" target="_blank" rel="noreferrer">https://insapp.ru/companies/</a>: дата редакции, адрес текущей СК и новая строка в списке.</p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span>Страница</span>
+          <a href="https://insapp.ru/companies/" target="_blank" rel="noreferrer">insapp.ru/companies/</a>
+        </div>
+        <div class="meta-card">
+          <span>Сейчас</span>
+          редакция 14.01.2026 года
+        </div>
+        <div class="meta-card">
+          <span>Нужно</span>
+          редакция 26.05.2026 года
+        </div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Скриншот с отметками</h2>
+      <div class="board">
+        <div class="screen-wrap">
+          <img src="insapp-companies-page.png" alt="Скриншот страницы списка страховых компаний Insapp">
+          <div class="mark mark-date"><div class="badge">1</div></div>
+          <div class="mark mark-address"><div class="badge">2</div></div>
+          <div class="mark mark-new add"><div class="badge">3</div></div>
+        </div>
+
+        <div class="changes">
+          <article class="change-card date">
+            <h3><span class="num">1</span>Дата редакции</h3>
+            <p>В заголовке страницы заменить дату редакции.</p>
+            <div class="from-to">
+              <div class="from">Было: редакция 14.01.2026 года</div>
+              <div class="to">Стало: редакция 26.05.2026 года</div>
+            </div>
+          </article>
+
+          <article class="change-card address">
+            <h3><span class="num">2</span>Адрес текущей СК</h3>
+            <p>В строке АО "БОРОВИЦКОЕ СТРАХОВОЕ ОБЩЕСТВО" заменить только написание города.</p>
+            <div class="from-to">
+              <div class="from">Было: 119049, город Москва, Мытная ул, д. 1 стр. 1</div>
+              <div class="to">Стало: 119049, г. Москва, Мытная ул, д. 1 стр. 1</div>
+            </div>
+          </article>
+
+          <article class="change-card new-company">
+            <h3><span class="num">3</span>Новая страховая компания</h3>
+            <p>Добавить новую строку после текущей строки 21.</p>
+            <div class="from-to">
+              <div class="to">22. АО СК "ДВАДЦАТЬ ПЕРВЫЙ ВЕК"</div>
+              <div class="to">190000, г. Санкт-Петербург, пр-кт Литейный, д. 57А, литера А</div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="note">
+        Менять только указанные данные. Остальные тексты, ссылки, ИНН и юридические формулировки на странице не трогать.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
