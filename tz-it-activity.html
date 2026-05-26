@@ -6,92 +6,119 @@
 <title>ТЗ страницы IT-деятельность Insapp</title>
 <style>
   :root{
-    --bg:#fafbfc; --card:#ffffff; --text:#24292e; --muted:#586069;
-    --border:#e1e4e8; --accent:#0366d6; --accent-soft:#eef4fb;
-    --bad-bg:#fff5f5; --bad-border:#fed7d7; --bad-text:#c53030;
-    --good-bg:#f0f9f4; --good-border:#c3e6cb; --good-text:#2f855a;
-    --warn-bg:#fffbeb; --warn-border:#fde68a; --warn-text:#92400e;
+    --text:#172033;
+    --muted:#667085;
+    --line:#d7deea;
+    --bg:#f4f7fb;
+    --panel:#ffffff;
+    --soft:#f8fafc;
+    --blue:#155bd8;
+    --blue-soft:#eef4ff;
+    --orange:#b25b00;
+    --orange-soft:#fff6e6;
+    --green:#087443;
+    --green-soft:#effaf4;
+    --red:#c53030;
+    --red-soft:#fff5f5;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",system-ui,sans-serif;font-size:15px;line-height:1.55;overflow-x:hidden}
-  .wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
-  h1{font-size:28px;line-height:1.25;margin:0 0 8px}
-  h2{font-size:22px;line-height:1.3;margin:36px 0 16px;padding-top:24px;border-top:1px solid var(--border)}
-  h2:first-of-type{border-top:none;padding-top:0;margin-top:24px}
-  h3{font-size:18px;line-height:1.35;margin:24px 0 12px}
-  h4{font-size:15px;margin:18px 0 8px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
-  .subtitle{color:var(--muted);font-size:14px;margin-bottom:16px}
-  .actions{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 18px}
-  .actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid var(--accent);border-radius:8px;background:var(--accent);color:#fff;font-weight:700;text-decoration:none}
-  .actions a.secondary{background:#fff;color:var(--accent)}
-  .partbar{margin:30px 0 12px;padding:12px 18px;background:var(--accent-soft);border-radius:8px;font-weight:700;font-size:16px;color:var(--accent);letter-spacing:.01em}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:20px 22px;margin:12px 0}
-  .accent{background:var(--accent-soft);border-left:3px solid var(--accent);padding:14px 16px;border-radius:6px;margin:12px 0}
-  .warn{background:var(--warn-bg);border-left:3px solid var(--warn-border);padding:14px 16px;border-radius:6px;margin:12px 0;color:var(--warn-text)}
-  .warn strong{color:var(--warn-text)}
-  .good{background:var(--good-bg);border-left:3px solid var(--good-border);padding:14px 16px;border-radius:6px;margin:12px 0;color:var(--good-text)}
-  .good strong{color:var(--good-text)}
-  .page-section{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px 28px;margin:16px 0}
-  .page-section h3.page-h{font-size:14px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin:0 0 14px;border-bottom:1px solid var(--border);padding-bottom:10px}
-  .page-section p{margin:8px 0}
-  .page-section.new{border:1px solid var(--good-border);background:#f6fdf8}
-  .page-section.new::before{content:"НОВЫЙ БЛОК";display:inline-block;font-size:11px;font-weight:700;color:var(--good-text);background:#d4edda;padding:2px 8px;border-radius:4px;margin-bottom:10px;letter-spacing:.05em}
-  .page-section.changed{border:1px solid var(--warn-border);background:#fffdf5}
-  .page-section.changed::before{content:"ЗАМЕНИТЬ ТЕКСТ";display:inline-block;font-size:11px;font-weight:700;color:var(--warn-text);background:#fde68a;padding:2px 8px;border-radius:4px;margin-bottom:10px;letter-spacing:.05em}
-  .page-section.kept{border:1px dashed var(--border);background:transparent}
-  .page-section.kept::before{content:"ОСТАВИТЬ КАК ЕСТЬ";display:inline-block;font-size:11px;font-weight:600;color:var(--muted);background:#eef0f2;padding:2px 8px;border-radius:4px;margin-bottom:10px;letter-spacing:.05em}
-  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:var(--card)}
-  th,td{border:1px solid var(--border);padding:10px 12px;vertical-align:top;text-align:left}
-  th{background:#f6f8fa;font-weight:600;color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.03em}
-  ol,ul{padding-left:22px}
-  ol li,ul li{margin:6px 0}
-  code{background:#f6f8fa;border:1px solid var(--border);border-radius:4px;padding:1px 6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
-  .check{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
-  .check:last-child{border-bottom:none}
-  .check .box{width:18px;height:18px;border:1.5px solid var(--muted);border-radius:4px;flex-shrink:0;margin-top:2px}
-  .page-row{display:block;margin:16px 0;position:relative}
-  .page-row .page-section{margin:0}
-  .screen-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 22px}
-  .screen-card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden}
-  .screen-shot{position:relative;height:260px;background:#fff;overflow:hidden;border-bottom:1px solid var(--border)}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.5;overflow-x:hidden}
+  main{width:min(1180px,calc(100% - 32px));margin:28px auto}
+  header,section{margin-bottom:18px;padding:24px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+  h1,h2,h3,p{margin-top:0}
+  h1{margin-bottom:12px;font-size:30px;line-height:1.2}
+  h2{margin-bottom:16px;font-size:22px;line-height:1.25}
+  h3{margin-bottom:8px;font-size:17px;line-height:1.25}
+  h4{margin:18px 0 8px;color:var(--muted);font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  a{color:var(--blue)}
+  code{padding:2px 6px;border-radius:5px;background:#edf1f7;font-family:Consolas,"Courier New",monospace;font-size:.95em}
+  .eyebrow{margin-bottom:8px;color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .lead{max-width:900px;margin-bottom:0;color:var(--muted);font-size:16px}
+  .meta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px}
+  .meta-card,.page-section,.card,.screen-card{border:1px solid var(--line);border-radius:8px;background:var(--soft);padding:14px}
+  .meta-card span{display:block;margin-bottom:6px;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+  .actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 14px;border:1px solid var(--blue);border-radius:8px;background:var(--blue);color:#fff;font-weight:700;text-decoration:none}
+  .actions a.secondary{background:#fff;color:var(--blue)}
+  .accent{margin-top:18px;padding:14px;border-left:4px solid var(--blue);border-radius:8px;background:var(--blue-soft)}
+  .screen-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  .screen-card{overflow:hidden;background:#fff;padding:0}
+  .screen-shot{position:relative;height:280px;overflow:hidden;border-bottom:1px solid var(--line);background:#fff}
   .screen-shot img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
   .screen-shot.middle img{object-position:center center}
   .screen-shot.lower img{object-position:center top}
   .screen-body{padding:14px 16px}
-  .screen-body h3{font-size:16px;margin:0 0 8px}
-  .screen-body p{margin:0;color:var(--muted)}
-  .marker{position:absolute;border:3px solid var(--warn-text);border-radius:8px;background:rgba(146,64,14,.10);box-shadow:0 0 0 2px rgba(255,255,255,.78)}
-  .marker.new{border-color:var(--good-text);background:rgba(47,133,90,.10)}
+  .screen-body h3{font-size:16px}
+  .screen-body p{margin-bottom:0;color:var(--muted)}
+  .marker{position:absolute;border:3px solid var(--orange);border-radius:8px;background:rgba(178,91,0,.10);box-shadow:0 0 0 2px rgba(255,255,255,.78)}
+  .marker.new{border-color:var(--green);background:rgba(8,116,67,.10)}
   .mark-requisites{left:2.5%;top:18%;width:88%;height:70%}
   .mark-services{left:2.5%;bottom:3%;width:78%;height:18%}
   .mark-cost{left:2.5%;top:3%;width:90%;height:20%}
-  .screen-chip{position:absolute;left:12px;bottom:12px;max-width:calc(100% - 24px);padding:7px 9px;border-radius:8px;background:rgba(255,255,255,.94);font-size:12px;font-weight:700;box-shadow:0 8px 18px rgba(36,41,46,.12)}
-  .aside-note{padding:14px 16px;background:#fffdf5;border:1px dashed var(--warn-border);border-radius:6px;font-size:13px;color:var(--muted);position:relative;line-height:1.5;margin-top:8px}
-  .aside-note-title{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--warn-text);margin-bottom:6px}
-  @media (min-width:1460px){
-    .aside-note{position:absolute;top:0;left:calc(100% + 80px);width:280px;margin-top:18px}
-    .aside-note::before{content:"";position:absolute;left:-72px;top:24px;width:60px;height:1.5px;background:var(--warn-border)}
-    .aside-note::after{content:"";position:absolute;left:-14px;top:18px;width:0;height:0;border-style:solid;border-width:7px 0 7px 12px;border-color:transparent transparent transparent var(--warn-border)}
+  .screen-chip{position:absolute;left:12px;bottom:12px;max-width:calc(100% - 24px);padding:7px 9px;border-radius:8px;background:rgba(255,255,255,.94);font-size:12px;font-weight:700;box-shadow:0 8px 18px rgba(23,32,51,.14)}
+  .page-section{margin:14px 0;padding:18px;background:#fff}
+  .page-section h3.page-h{margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line);color:var(--muted);font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .page-section p{margin:8px 0}
+  .page-section.new{border-left:4px solid var(--green);background:var(--green-soft)}
+  .page-section.changed{border-left:4px solid var(--orange);background:var(--orange-soft)}
+  .page-section.kept{border-left:4px solid var(--blue);background:var(--blue-soft)}
+  .page-section.new::before,.page-section.changed::before,.page-section.kept::before{display:inline-block;margin-bottom:10px;padding:3px 8px;border-radius:5px;color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+  .page-section.new::before{content:"Новый блок";background:var(--green)}
+  .page-section.changed::before{content:"Заменить текст";background:var(--orange)}
+  .page-section.kept::before{content:"Оставить как есть";background:var(--blue)}
+  .page-row{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px;align-items:start;margin:14px 0}
+  .page-row .page-section{margin:0}
+  .aside-note{padding:14px;border:1px dashed #d8a55a;border-radius:8px;background:#fffdf5;color:var(--muted);font-size:13px;line-height:1.5}
+  .aside-note-title{display:block;margin-bottom:6px;color:var(--orange);font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px;background:#fff}
+  th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top;text-align:left}
+  th{background:var(--soft);color:var(--muted);font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+  ol,ul{padding-left:22px}
+  ol li,ul li{margin:6px 0}
+  .card{margin:0;background:var(--soft)}
+  .check{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+  .check:last-child{border-bottom:none}
+  .check .box{width:18px;height:18px;margin-top:2px;flex-shrink:0;border:1.5px solid var(--muted);border-radius:4px;background:#fff}
+  .warn{margin-top:14px;padding:14px;border-left:4px solid var(--orange);border-radius:8px;background:var(--orange-soft);color:#7a3b00}
+  .warn strong{color:#7a3b00}
+  .footer-note{margin-top:24px;text-align:center;color:var(--muted);font-size:13px}
+  @media (max-width:880px){
+    main{width:100%;margin:0}
+    header,section{border-right:0;border-left:0;border-radius:0;padding:20px 16px}
+    .meta-grid,.screen-map,.page-row{grid-template-columns:1fr}
+    .actions a{flex:1 1 100%}
   }
   @media (max-width:640px){
-    .wrap{width:300px;max-width:300px;margin:0 0 0 14px;padding:18px 0 60px}
-    h1{font-size:20px;word-break:break-word}
-    h2{font-size:18px}
-    h3{font-size:16px}
-    .subtitle,.accent,.card,.page-section,.aside-note,.screen-body,li,p,td,th,code{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
-    .actions a{flex:1 1 100%}
-    .screen-map{grid-template-columns:1fr}
-    .screen-card{width:100%}
+    h1{font-size:24px;word-break:break-word}
+    h2{font-size:20px}
     .screen-shot{height:220px}
+    .accent,.card,.page-section,.aside-note,.screen-body,li,p,td,th,code{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
     table{display:block;overflow-x:auto;white-space:normal}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
+<main>
 
+<header>
+<div class="eyebrow">Отдельное ТЗ внутри проекта</div>
 <h1>ТЗ страницы IT-деятельность Insapp</h1>
-<div class="subtitle">Финальная версия страницы insapp.ru/it-deyatelnost/ под продление IT-аккредитации (срок - до 01.06.2026). Документ содержит готовый текст всех блоков и пометки что меняется, что остаётся без изменений.</div>
+<p class="lead">Финальная версия страницы <a href="https://insapp.ru/it-deyatelnost/" target="_blank" rel="noopener noreferrer">insapp.ru/it-deyatelnost/</a> под продление IT-аккредитации. Документ содержит готовый текст блоков и пометки: что меняется, что остаётся без изменений и что нужно добавить.</p>
+
+<div class="meta-grid">
+  <div class="meta-card">
+    <span>Страница</span>
+    <a href="https://insapp.ru/it-deyatelnost/" target="_blank" rel="noopener noreferrer">insapp.ru/it-deyatelnost/</a>
+  </div>
+  <div class="meta-card">
+    <span>Срок</span>
+    до 01.06.2026
+  </div>
+  <div class="meta-card">
+    <span>Нужно</span>
+    обновить структуру, формулировки и блок стоимости
+  </div>
+</div>
 
 <div class="actions">
   <a href="index.html">Вернуться к аудиту</a>
@@ -102,7 +129,9 @@
 <div class="accent">
   <strong>Задача разработчику:</strong> привести страницу <code>insapp.ru/it-deyatelnost/</code> в соответствие с приведённой ниже структурой. Все блоки расположены в том порядке, в котором они должны идти на странице сверху вниз. Каждый блок помечен меткой: <em>оставить как есть</em>, <em>заменить текст</em> или <em>новый блок</em>.
 </div>
+</header>
 
+<section>
 <h2>Визуальная карта правок</h2>
 
 <div class="screen-map">
@@ -140,7 +169,9 @@
     </div>
   </article>
 </div>
+</section>
 
+<section>
 <h2>Финальная структура страницы (сверху вниз)</h2>
 
 <div class="page-section new">
@@ -220,7 +251,9 @@
   <h3 class="page-h">Сведения о государственной аккредитации</h3>
   <p>ООО «ИНСАП» включено в реестр аккредитованных российских организаций, осуществляющих деятельность в области информационных технологий. Проверить сведения можно на официальном сервисе Госуслуг <a href="#">«Реестр аккредитованных ИТ-компаний»</a>. Данные для проверки: Общество с ограниченной ответственностью «ИНСАП», ИНН 7743225416.</p>
 </div>
+</section>
 
+<section>
 <h2>Чек-лист правок</h2>
 
 <div class="card">
@@ -240,10 +273,11 @@
   <strong>Срок:</strong> правки на странице должны быть применены до подачи заявления на продление IT-аккредитации (срок горит - до 01.06.2026).
 </div>
 
-<div style="margin-top:32px;text-align:center;color:var(--muted);font-size:13px">
+<div class="footer-note">
   Документ под утверждение и передачу разработчику. Дата: 26.05.2026.
 </div>
+</section>
 
-</div>
+</main>
 </body>
 </html>
