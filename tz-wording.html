@@ -29,6 +29,7 @@
       background: var(--page);
       color: var(--ink);
       font: 15px/1.55 Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
     header {
       padding: 34px 44px 28px;
@@ -66,6 +67,7 @@
       color: var(--muted);
       font-size: 16px;
     }
+    .h1-tail { display: inline; }
     .meta {
       margin-bottom: 10px;
       color: var(--muted);
@@ -258,8 +260,45 @@
       color: var(--muted);
     }
     @media (max-width: 940px) {
-      header { padding: 28px 18px 24px; }
-      .legend { grid-template-columns: 1fr; }
+      header {
+        overflow-x: hidden;
+        padding: 28px 54px 24px 18px;
+      }
+      header > * {
+        width: auto;
+        max-width: 100%;
+      }
+      h1 {
+        font-size: 22px;
+        line-height: 1.18;
+        word-break: break-word;
+      }
+      .h1-tail { display: block; }
+      .lead,
+      .legend-card,
+      .text-box,
+      .reason,
+      .place {
+        max-width: 100%;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+      .actions a {
+        flex: 1 1 100%;
+        min-width: 0;
+        padding: 0 12px;
+        text-align: center;
+      }
+      .legend {
+        width: auto;
+        max-width: 100%;
+        grid-template-columns: 1fr;
+      }
+      main {
+        width: auto;
+        max-width: none;
+        margin: 26px 54px 52px 18px;
+      }
       .section { padding: 16px; }
       .section-head { display: block; }
       .count { display: block; margin-top: 8px; }
@@ -267,12 +306,22 @@
       .texts { grid-template-columns: 1fr; }
       .shot { min-height: 220px; }
     }
+    @media (max-width: 520px) {
+      header > *,
+      .legend,
+      main {
+        width: 300px;
+        max-width: 300px;
+      }
+      h1 { font-size: 21px; }
+      .lead { font-size: 15px; }
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="meta">ТЗ для правок сайта Insapp · 26.05.2026</div>
-    <h1>Изменение формулировок под ИТ-позиционирование</h1>
+    <h1>Изменение формулировок <span class="h1-tail">под ИТ-позиционирование</span></h1>
     <p class="lead">Нужно заменить формулировки про заработок, агентскую схему, маркетплейсы, агрегаторы, продажу полисов, комиссии и монетизацию трафика. Новые тексты должны быть понятны бизнесу и сохранять смысл: Insapp как ИТ-сервис для онлайн-расчетов, заявок, виджетов, API, личного кабинета и передачи структурированных данных.</p>
     <div class="actions">
       <a href="index.html">Вернуться к аудиту</a>
