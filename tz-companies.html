@@ -72,6 +72,13 @@
       line-height: 1.25;
     }
 
+    .change-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
     a {
       color: var(--blue);
     }
@@ -230,13 +237,23 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 26px;
-      height: 26px;
-      margin-right: 8px;
+      flex: 0 0 auto;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      background: var(--text);
+      background: var(--blue);
       color: #fff;
+      font-size: 15px;
       font-weight: 700;
+      line-height: 1;
+    }
+
+    .change-card.address .num {
+      background: var(--red);
+    }
+
+    .change-card.new-company .num {
+      background: var(--orange);
     }
 
     .from-to {
