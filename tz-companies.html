@@ -170,21 +170,21 @@
 
     .badge {
       position: absolute;
-      left: 8px;
-      top: 8px;
+      left: 6px;
+      top: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 34px;
-      height: 34px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      border: 2px solid #fff;
+      border: 3px solid #fff;
       background: var(--red);
       color: #fff;
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 19px;
+      font-weight: 800;
       line-height: 1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, .28);
       z-index: 3;
     }
 
@@ -237,27 +237,34 @@
       background: var(--orange-soft);
     }
 
-    .num {
+    .change-card .num {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       flex: 0 0 auto;
-      width: 30px;
-      height: 30px;
+      width: 42px;
+      height: 42px;
+      margin: 0;
       border-radius: 50%;
+      border: 3px solid #fff;
       background: var(--blue);
       color: #fff;
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: 800;
       line-height: 1;
+      letter-spacing: 0;
+      text-transform: none;
+      box-shadow: 0 6px 16px rgba(21, 91, 216, .32);
     }
 
     .change-card.address .num {
       background: var(--red);
+      box-shadow: 0 6px 16px rgba(197, 48, 48, .30);
     }
 
     .change-card.new-company .num {
       background: var(--orange);
+      box-shadow: 0 6px 16px rgba(178, 91, 0, .32);
     }
 
     .from-to {
