@@ -3,28 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ТЗ: изменение формулировок Insapp</title>
+  <title>ТЗ: правки формулировок Insapp</title>
   <style>
     :root {
-      --text: #172033;
-      --muted: #667085;
-      --line: #d7deea;
       --bg: #f4f7fb;
       --panel: #ffffff;
       --soft: #f8fafc;
+      --text: #172033;
+      --muted: #667085;
+      --line: #d7deea;
       --blue: #155bd8;
       --blue-soft: #eef4ff;
-      --orange: #b25b00;
-      --orange-soft: #fff6e6;
-      --green: #087443;
-      --green-soft: #effaf4;
       --red: #c53030;
       --red-soft: #fff5f5;
+      --orange: #a15c00;
+      --orange-soft: #fff7e6;
+      --green: #087443;
+      --green-soft: #effaf4;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -51,9 +49,7 @@
     h1,
     h2,
     h3,
-    p {
-      margin-top: 0;
-    }
+    p { margin-top: 0; }
 
     h1 {
       margin-bottom: 12px;
@@ -69,9 +65,17 @@
 
     h3 {
       margin-bottom: 8px;
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.25;
     }
+
+    a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
 
     .eyebrow {
       margin-bottom: 8px;
@@ -83,42 +87,32 @@
     }
 
     .lead {
-      max-width: 920px;
+      max-width: 980px;
       margin-bottom: 0;
       color: var(--muted);
       font-size: 16px;
     }
 
-    .change-card,
-    .checklist {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--soft);
+    .note {
+      margin-top: 16px;
       padding: 14px;
-    }
-
-    .text-box strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .03em;
-      text-transform: uppercase;
+      border-left: 4px solid var(--orange);
+      border-radius: 8px;
+      background: var(--orange-soft);
     }
 
     .group {
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
-    .group:first-of-type {
-      margin-top: 0;
-    }
+    .group:first-of-type { margin-top: 0; }
 
-    .group h3 {
-      margin-bottom: 10px;
+    .group-title {
+      margin-bottom: 12px;
       color: var(--muted);
       font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .03em;
       text-transform: uppercase;
     }
 
@@ -127,33 +121,33 @@
       gap: 14px;
     }
 
-    .change-card {
+    .task {
       display: grid;
-      grid-template-columns: 360px minmax(0, 1fr);
+      grid-template-columns: 390px minmax(0, 1fr);
       gap: 18px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
       background: #fff;
     }
 
-    .change-card.p0 {
-      border-left: 4px solid var(--red);
+    .task.p0 {
+      border-left-color: var(--red);
       background: var(--red-soft);
     }
 
-    .change-card.p1 {
-      border-left: 4px solid var(--orange);
+    .task.p1 {
+      border-left-color: var(--orange);
       background: var(--orange-soft);
     }
 
-    .change-card.p2 {
-      border-left: 4px solid var(--blue);
+    .task.p2 {
+      border-left-color: var(--blue);
       background: var(--blue-soft);
     }
 
     .shot {
-      position: relative;
-      min-height: 260px;
-      height: 100%;
-      max-height: 340px;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -163,24 +157,13 @@
     .shot img {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top center;
+      height: auto;
     }
 
-    .pos-main-mid img { object-position: center 36%; }
-    .pos-main-low img { object-position: center 58%; }
-    .pos-partner-mid img { object-position: center 48%; }
-    .pos-product-top img { object-position: top center; }
-    .pos-product-low img { object-position: center 72%; }
-    .pos-blog-top img { object-position: top center; }
-    .pos-blog-mid img { object-position: center 45%; }
-    .pos-terms img { object-position: center 22%; }
-
-    .change-body h3 {
+    .task-head {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      align-items: flex-start;
+      gap: 12px;
       margin-bottom: 10px;
     }
 
@@ -191,50 +174,48 @@
       flex: 0 0 auto;
       width: 42px;
       height: 42px;
-      border: 3px solid #fff;
       border-radius: 50%;
       background: var(--blue);
       color: #fff;
       font-size: 20px;
       font-weight: 800;
       line-height: 1;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .24);
     }
 
-    .change-card.p0 .num {
-      background: var(--red);
-    }
+    .p0 .num { background: var(--red); }
+    .p1 .num { background: var(--orange); }
 
-    .change-card.p1 .num {
-      background: var(--orange);
-    }
-
-    .page-link {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      max-width: 100%;
-      margin-bottom: 12px;
-      color: var(--blue);
-      font-size: 14px;
-      font-weight: 700;
-      overflow-wrap: anywhere;
+    .meta {
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .from-to {
       display: grid;
       gap: 8px;
+      margin-top: 10px;
     }
 
-    .text-box {
+    .box {
       padding: 10px;
       border-radius: 7px;
       overflow-wrap: anywhere;
+      background: #fff;
+    }
+
+    .box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
     }
 
     .from {
-      border: 1px solid #ffd6d6;
-      background: #fff;
+      border: 1px solid #ffd0d0;
       color: #8f1d1d;
     }
 
@@ -246,32 +227,32 @@
     }
 
     .checklist {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
       background: var(--soft);
     }
 
     .check {
-      display: flex;
-      align-items: flex-start;
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
       gap: 10px;
-      padding: 8px 0;
-      border-bottom: 1px solid var(--line);
+      align-items: start;
     }
 
-    .check:last-child {
-      border-bottom: 0;
-    }
-
-    .box {
+    .check::before {
+      content: "";
       width: 18px;
       height: 18px;
-      margin-top: 2px;
-      flex: 0 0 auto;
+      margin-top: 3px;
       border: 1.5px solid var(--muted);
       border-radius: 4px;
       background: #fff;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 900px) {
       main {
         width: 100%;
         margin: 0;
@@ -285,17 +266,12 @@
         padding: 20px 16px;
       }
 
-      .change-card {
+      .task {
         grid-template-columns: 1fr;
       }
 
       h1 {
         font-size: 24px;
-        overflow-wrap: anywhere;
-      }
-
-      .shot {
-        min-height: 230px;
       }
     }
   </style>
@@ -305,329 +281,221 @@
     <header>
       <div class="eyebrow">Отдельное ТЗ внутри проекта</div>
       <h1>Правки формулировок под ИТ-позиционирование</h1>
-      <p class="lead">На скриншотах отмечены места, где нужно заменить формулировки про заработок, агентскую схему, маркетплейсы, агрегаторы, продажу полисов, комиссии и монетизацию на понятное бизнесу описание ИТ-сервиса: виджет, API, онлайн-заявки, расчет, личный кабинет и передача данных.</p>
-
+      <p class="lead">Задачи разнесены по логике сайта и по конкретным местам на скриншотах. Один визуальный блок не объединяется в одну правку, если внутри него есть разные смысловые элементы: например, заголовок первого экрана и подпись под ним оформлены отдельными задачами.</p>
+      <div class="note">Цель правок: убрать акцент на заработке, монетизации, продаже полисов, комиссиях, вознаграждениях и агентской модели. Вместо этого описывать Insapp как ИТ-сервис: виджет, API, онлайн-заявки, расчет, личный кабинет, статусы и передачу данных.</div>
     </header>
 
     <section>
-      <h2>Скриншоты с отметками</h2>
+      <h2>Скриншоты и задачи</h2>
 
       <div class="group">
-        <h3>Сначала: суперважные</h3>
-        <div class="cards" data-priority="p0"></div>
+        <div class="group-title">Главная: первый экран</div>
+        <div class="cards" data-group="main-hero"></div>
       </div>
 
       <div class="group">
-        <h3>Затем: важные</h3>
-        <div class="cards" data-priority="p1"></div>
+        <div class="group-title">Главная: преимущества, шаги и решение</div>
+        <div class="cards" data-group="main-body"></div>
       </div>
 
       <div class="group">
-        <h3>После: остальные</h3>
-        <div class="cards" data-priority="p2"></div>
+        <div class="group-title">Партнерская страница</div>
+        <div class="cards" data-group="partner"></div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Продуктовые страницы и блог</div>
+        <div class="cards" data-group="products-blog"></div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Юридические тексты</div>
+        <div class="cards" data-group="legal"></div>
       </div>
     </section>
 
     <section>
-      <h2>Чек-лист правок</h2>
+      <h2>Чек-лист приемки</h2>
       <div class="checklist">
-        <div class="check"><div class="box"></div><div>Убрать из текстов сайта акцент на заработке, доходе, вознаграждении, комиссии, монетизации и продаже полисов.</div></div>
-        <div class="check"><div class="box"></div><div>Заменить формулировки про агентскую схему, партнерскую программу, маркетплейс и агрегатор на описание ИТ-сервиса.</div></div>
-        <div class="check"><div class="box"></div><div>На продуктовых страницах использовать формулировки про виджет, API, лендинг, онлайн-расчет, прием онлайн-заявок и личный кабинет.</div></div>
-        <div class="check"><div class="box"></div><div>В блоговых материалах заменить темы про заработок, комиссии и продажу страховых продуктов на ИТ-инструменты для сайтов и приложений.</div></div>
-        <div class="check"><div class="box"></div><div>В юридических блоках сохранить смысл “не кредитор, не страховщик, не платежный агент”, но убрать акцент на привлечении клиентов и агентской продаже.</div></div>
-        <div class="check"><div class="box"></div><div>Проверить, что все 22 блока из этого ТЗ обновлены на сайте.</div></div>
+        <div class="check">На главной странице отдельно исправлены заголовок первого экрана и подпись под ним.</div>
+        <div class="check">В одинаковых карточках преимуществ заменены слова про выплаты, доход, вознаграждение и продажи.</div>
+        <div class="check">Навигация, CTA и заголовки больше не ведут пользователя в логику "заработка", "партнерской программы" и "продаж".</div>
+        <div class="check">Продуктовые страницы описывают подключение виджета/API, расчет и прием заявок, а не продажу страховых продуктов.</div>
+        <div class="check">Блоговые материалы переименованы и переписаны в сторону ИТ-инструментов для сайтов и приложений.</div>
+        <div class="check">Юридические формулировки сохраняют дисклеймеры, но убирают акцент на привлечении клиентов и агентской продаже.</div>
       </div>
     </section>
   </main>
 
   <script>
-    const changes = [
+    const tasks = [
       {
         id: 1,
+        group: "main-hero",
         priority: "p0",
         page: "Главная",
-        block: "Первый экран",
+        block: "Первый экран, главный заголовок",
         url: "https://insapp.ru/",
-        image: "audit-main.png",
-        pos: "pos-product-top",
-        mark: "mark-short",
-        now: "Зарабатывай прямо сейчас. Монетизируй свой сайт или мобильное приложение и зарабатывай с продажи финансовых и страховых продуктов.",
-        replace: "Подключай прямо сейчас. Добавь на сайт или в мобильное приложение готовый онлайн-сервис для расчета и приема заявок.",
-        reason: "Прямой акцент на заработке, монетизации и продаже финансовых продуктов."
+        image: "tz-shot-01-main-hero-title.png",
+        now: "Зарабатывай прямо сейчас",
+        replace: "Подключай прямо сейчас",
+        reason: "Это отдельная задача: заголовок задает общий смысл страницы и сейчас напрямую обещает заработок."
       },
       {
         id: 2,
+        group: "main-hero",
         priority: "p0",
         page: "Главная",
-        block: "Преимущества",
+        block: "Первый экран, подпись под заголовком",
         url: "https://insapp.ru/",
-        image: "audit-main.png",
-        pos: "pos-main-mid",
-        mark: "mark-mid",
-        now: "Стабильные выплаты. Своевременно и в полном объеме платим вознаграждение партнерам. Высокий доход. Зарабатывайте до 60% от суммы проданных страховок.",
-        replace: "Стабильная работа. Все заявки и статусы доступны в личном кабинете. Быстрый запуск. Подключайте виджет, API или лендинг для приема онлайн-заявок.",
-        reason: "Выплаты, вознаграждение и процент от продаж выглядят как агентская модель."
+        image: "tz-shot-02-main-hero-subtitle.png",
+        now: "Монетизируй свой сайт или мобильное приложение и зарабатывай с продажи финансовых и страховых продуктов",
+        replace: "Добавь на сайт или в мобильное приложение готовый онлайн-сервис для расчета и приема заявок",
+        reason: "Подпись находится в другом месте экрана и несет другой смысл: монетизация сайта и продажа фин./страховых продуктов."
       },
       {
         id: 3,
+        group: "main-body",
+        priority: "p0",
+        page: "Главная",
+        block: "Карточки преимуществ",
+        url: "https://insapp.ru/",
+        image: "tz-shot-03-main-benefits.png",
+        now: "Стабильные выплаты. Своевременно и в полном объеме платим вознаграждение партнерам. Высокий доход. Зарабатывайте до 60% от суммы проданных страховок.",
+        replace: "Стабильная работа. Все заявки и статусы доступны в личном кабинете. Быстрый запуск. Подключайте виджет, API или лендинг для приема онлайн-заявок.",
+        reason: "В блоке две отдельные рискованные темы: выплаты/вознаграждение и высокий доход от проданных страховок."
+      },
+      {
+        id: 4,
+        group: "main-body",
+        priority: "p1",
+        page: "Главная",
+        block: "Блок с шагами",
+        url: "https://insapp.ru/",
+        image: "tz-shot-04-main-steps.png",
+        now: "Начать зарабатывать легко. Оставьте заявку на подключение и получите индивидуальный расчет дохода. Зарабатывайте. Персональный куратор будет помогать развивать продажи.",
+        replace: "Начать подключение легко. Оставьте заявку и получите план запуска. Подключайте сервис. Персональный менеджер поможет настроить виджет и запустить онлайн-заявки.",
+        reason: "Здесь нужно исправить и название блока, и тексты шагов: не расчет дохода и продажи, а запуск ИТ-сервиса."
+      },
+      {
+        id: 5,
+        group: "main-body",
+        priority: "p1",
+        page: "Главная",
+        block: "Блок “Решение Insapp” и каталог",
+        url: "https://insapp.ru/",
+        image: "tz-shot-05-main-solution.png",
+        now: "Позволяем монетизировать вашу аудиторию с помощью продаж финансовых и страховых продуктов. Продукты для монетизации.",
+        replace: "Подключите расчет и прием заявок через готовый ИТ-сервис. Раздел: “Сервисы для подключения”.",
+        reason: "Блок должен объяснять решение и каталог подключаемых сервисов, а не монетизацию аудитории."
+      },
+      {
+        id: 6,
+        group: "partner",
         priority: "p0",
         page: "Партнерская программа",
         block: "Первый экран",
         url: "https://insapp.ru/partner/",
-        image: "audit-partner.png",
-        pos: "pos-product-top",
-        mark: "mark-wide",
-        now: "Установи виджет по страхованию и начни зарабатывать на каждой продаже. 500+ млн. заработали наши партнеры.",
-        replace: "Установи страховой виджет и начни принимать заявки онлайн. Заявки, расчеты и подключения доступны в личном кабинете.",
-        reason: "Первый экран задает неверный смысл всей страницы: заработок на продаже вместо подключения ИТ-сервиса."
+        image: "tz-shot-06-partner-hero.png",
+        now: "Зарабатывай прямо сейчас. Установи виджет по страхованию и начни зарабатывать на каждой продаже. 500+ млн. заработали наши партнеры.",
+        replace: "Подключай сервис прямо сейчас. Установи страховой виджет и начни принимать заявки онлайн. Заявки, расчеты и подключения доступны в личном кабинете.",
+        reason: "На первом экране партнерской страницы сразу три места с логикой заработка: заголовок, подпись и финансовая цифра."
       },
       {
-        id: 5,
+        id: 7,
+        group: "partner",
         priority: "p0",
         page: "Партнерская программа",
-        block: "Как это работает, шаг 3",
+        block: "Что можно продавать / зачем партнеру",
         url: "https://insapp.ru/partner/",
-        image: "audit-partner.png",
-        pos: "pos-partner-mid",
-        mark: "mark-mid",
-        now: "Зарабатывайте с продажи страховок. Монетизируем вашу аудиторию с помощью продажи полисов страхования.",
-        replace: "Подключайте страховой сервис. Добавьте на сайт расчет и оформление заявок для вашей аудитории.",
-        reason: "Здесь прямо описаны продажи полисов и монетизация аудитории."
+        image: "tz-shot-07-partner-blocks.png",
+        now: "Что можно продавать. Позволяем монетизировать вашу аудиторию с помощью продажи полисов страхования. Высокий доход.",
+        replace: "Что можно подключить. Добавьте вашей аудитории онлайн-сервис для расчета и оформления заявок. Быстрый запуск.",
+        reason: "Название и карточки переводим из “продавать/монетизировать” в “подключить/принимать заявки”."
       },
       {
         id: 8,
+        group: "partner",
+        priority: "p1",
+        page: "Партнерская программа",
+        block: "Как это работает, шаг 3",
+        url: "https://insapp.ru/partner/",
+        image: "tz-shot-07-partner-blocks.png",
+        now: "Зарабатывайте с продажи страховок. Монетизируем вашу аудиторию с помощью продажи полисов страхования.",
+        replace: "Подключайте страховой сервис. Добавьте на сайт расчет и оформление заявок для вашей аудитории.",
+        reason: "Отдельная правка для сценария работы: шаг должен описывать подключение сервиса, а не продажу полисов."
+      },
+      {
+        id: 9,
+        group: "products-blog",
+        priority: "p1",
+        page: "ОСАГО / КАСКО / ипотека / микрозаймы",
+        block: "Первый экран продуктовых страниц",
+        url: "https://insapp.ru/calculator-osago/",
+        image: "tz-shot-03-main-benefits.png",
+        now: "Виджет по продаже полисов. Установи на сайт за 5 минут и начни зарабатывать.",
+        replace: "Виджет для расчета и приема заявок. Установи на сайт за 5 минут и начни принимать заявки онлайн.",
+        reason: "На продуктовых страницах важно говорить о функции виджета/API, а не о продаже и заработке."
+      },
+      {
+        id: 10,
+        group: "products-blog",
+        priority: "p1",
+        page: "Продуктовые страницы",
+        block: "Типовые преимущества",
+        url: "https://insapp.ru/mortgage/",
+        image: "tz-shot-03-main-benefits.png",
+        now: "Стабильные выплаты. Платим вознаграждение партнерам. Высокий доход. Зарабатывайте до 60% от суммы проданных страховок.",
+        replace: "Стабильная работа. Все заявки и статусы доступны в личном кабинете. Быстрый запуск. Подключайте виджет, API или лендинг для приема онлайн-заявок.",
+        reason: "Повторяющийся блок нужно исправить на всех продуктовых страницах, чтобы не оставить старую модель в дублях."
+      },
+      {
+        id: 11,
+        group: "products-blog",
         priority: "p0",
         page: "Блог: микрозаймы",
         block: "Статья",
         url: "https://insapp.ru/blog/kak-zarabotat-na-mikrozaymakh-v-internete-obzor-dostupnykh-sposobov/",
-        image: "audit-blog-microloans.png",
-        pos: "pos-blog-top",
-        mark: "mark-wide",
-        now: "Как заработать на микрозаймах... Стать участником партнерской программы... вознаграждение за каждого нового клиента... комиссия за успешную заявку... За каждую успешную сделку вы будете получать вознаграждение.",
+        image: "tz-shot-08-blog-microloans.png",
+        now: "Как заработать на микрозаймах. Стать участником партнерской программы. Вознаграждение за каждого нового клиента. Комиссия за успешную заявку.",
         replace: "Как подключить онлайн-заявки на микрозаймы. Виджет, форма заявки, статусы обращений и личный кабинет помогают передавать структурированные данные в информационные системы финансовых организаций.",
-        reason: "Статья содержит сразу несколько рискованных слов: заработок, партнерская программа, вознаграждение, клиент, комиссия, сделка."
-      },
-      {
-        id: 9,
-        priority: "p0",
-        page: "Пользовательское соглашение",
-        block: "Юридические формулировки",
-        url: "https://insapp.ru/polzovatelskoe-soglashenie/",
-        image: "audit-terms.png",
-        pos: "pos-terms",
-        mark: "mark-wide",
-        now: "Сервис не является платежным агентом... у Общества заключены договоры о сотрудничестве в сфере привлечения клиентов...",
-        replace: "Сервис помогает принимать, обрабатывать и передавать онлайн-заявки через ИТ-сервис. ООО «ИНСАП» не является кредитором, страховщиком или платежным агентом, не принимает решения по заявкам и не оказывает финансовые услуги; взаимодействие с организациями носит информационно-технологический характер.",
-        reason: "Фраза про привлечение клиентов лучше заменить на информационно-технологическое взаимодействие."
+        reason: "Статья содержит сразу несколько рискованных смыслов, но оформляется отдельной задачей как блоговый материал."
       },
       {
         id: 12,
-        priority: "p0",
-        page: "Главная",
-        block: "Решение и каталог",
-        url: "https://insapp.ru/",
-        image: "audit-main.png",
-        pos: "pos-main-low",
-        mark: "mark-mid",
-        now: "Позволяем монетизировать вашу аудиторию с помощью продаж финансовых и страховых продуктов. Продукты для монетизации.",
-        replace: "Решение Insapp. Подключите расчет и прием заявок через готовый ИТ-сервис. Раздел: “Сервисы для подключения”.",
-        reason: "Слова “монетизация” и “продукты для монетизации” лучше заменить на сервисы для подключения."
-      },
-      {
-        id: 4,
-        priority: "p1",
-        page: "Партнерская программа",
-        block: "Зачем партнеру",
-        url: "https://insapp.ru/partner/",
-        image: "audit-partner.png",
-        pos: "pos-partner-mid",
-        mark: "mark-mid",
-        now: "Позволяем монетизировать вашу аудиторию с помощью продаж полисов страхования.",
-        replace: "Позволяем добавить вашей аудитории удобный онлайн-сервис для расчета и оформления заявок.",
-        reason: "Смысл сохраняется, но уходит акцент на продажу полисов."
-      },
-      {
-        id: 6,
-        priority: "p1",
-        page: "ОСАГО / КАСКО / Ипотека",
-        block: "Первый экран продуктовых страниц",
-        url: "https://insapp.ru/calculator-osago/",
-        image: "audit-osago.png",
-        pos: "pos-product-top",
-        mark: "mark-wide",
-        now: "Виджет по продаже полисов ... Установи на сайт за 5 минут и начни зарабатывать ...",
-        replace: "Виджет для расчета и приема заявок. Установи на сайт за 5 минут и начни принимать заявки онлайн.",
-        reason: "Нужно убрать “продажу полисов” и “заработок” из продуктовых первых экранов."
-      },
-      {
-        id: 7,
-        priority: "p1",
-        page: "ОСАГО / КАСКО / Ипотека",
-        block: "Как начать",
-        url: "https://insapp.ru/calculator-kasko/",
-        image: "audit-kasko.png",
-        pos: "pos-product-low",
-        mark: "mark-low",
-        now: "Получите индивидуальный расчет дохода в подарок. Зарабатывайте с продажи страховок. Персональный куратор будет помогать развивать продажи.",
-        replace: "Оставьте заявку на подключение и получите план запуска. Подключайте виджет. Персональный куратор поможет настроить сервис и запустить онлайн-заявки.",
-        reason: "Расчет дохода и развитие продаж лучше заменить планом запуска и настройкой сервиса."
-      },
-      {
-        id: 11,
-        priority: "p1",
-        page: "Главная",
-        block: "Начать зарабатывать легко",
-        url: "https://insapp.ru/",
-        image: "audit-main.png",
-        pos: "pos-main-low",
-        mark: "mark-low",
-        now: "Оставьте заявку на подключение и получите индивидуальный расчет дохода в подарок. Зарабатывайте. Персональный куратор будет помогать развивать продажи.",
-        replace: "Оставьте заявку на подключение и получите план запуска. Подключайте сервис. Персональный куратор поможет с настройкой виджета и запуском онлайн-заявок.",
-        reason: "Название и CTA блока должны вести к запуску сервиса, а не к заработку."
+        group: "products-blog",
+        priority: "p2",
+        page: "Блоговые статьи про ОСАГО, КАСКО, ипотеку и страхование",
+        block: "Заголовки и первые абзацы",
+        url: "https://insapp.ru/blog/",
+        image: "tz-shot-08-blog-microloans.png",
+        now: "Новый способ заработка, способ монетизировать сайт, партнерское вознаграждение, прибыль, комиссия, продажа полисов.",
+        replace: "Онлайн-расчет, форма заявки, подключение виджета/API, личный кабинет, статусы обращений, обмен структурированными данными.",
+        reason: "Блог нужно вычитать пакетно: старые SEO-темы про заработок заменить на ИТ-темы."
       },
       {
         id: 13,
-        priority: "p1",
-        page: "Главная",
-        block: "Личный кабинет / менеджер",
-        url: "https://insapp.ru/",
-        image: "audit-main.png",
-        pos: "pos-main-low",
-        mark: "mark-mid",
-        now: "Все данные ваших клиентов надежно сохранены в личном кабинете партнера. Менеджер поможет с подключением нужного продукта и поможет запустить продажи.",
-        replace: "Все заявки пользователей надежно сохранены в личном кабинете. Менеджер поможет выбрать формат подключения и запустить онлайн-заявки.",
-        reason: "Лучше говорить о заявках пользователей и формате подключения, а не о клиентах партнера и продажах."
+        group: "legal",
+        priority: "p0",
+        page: "Пользовательское соглашение",
+        block: "Термины и описание сервиса",
+        url: "https://insapp.ru/polzovatelskoe-soglashenie/",
+        image: "tz-shot-09-terms.png",
+        now: "Сервис предоставляет пользователю возможность поиска, подбора программ страхования, расчета страховой премии и содержит функционал информации пользователю о заказанных им услугах.",
+        replace: "Сервис помогает принимать, обрабатывать и передавать онлайн-заявки через ИТ-сервис; расчет и условия оказываемой услуги определяет соответствующая финансовая или страховая организация.",
+        reason: "Юридический текст должен точнее фиксировать технологическую роль Insapp."
       },
       {
         id: 14,
-        priority: "p1",
-        page: "Партнерская программа",
-        block: "Что можно продавать",
-        url: "https://insapp.ru/partner/",
-        image: "audit-partner.png",
-        pos: "pos-partner-mid",
-        mark: "mark-low",
-        now: "Что можно продавать. КАСКО — востребованная страховка, на которой можно неплохо заработать. Пользователи смогут приобрести полис.",
-        replace: "Что можно подключить. КАСКО - онлайн-сервис для расчета условий и отправки онлайн-заявки.",
-        reason: "Заголовок и описание переводим из “продавать” в “подключить сервис”."
-      },
-      {
-        id: 15,
-        priority: "p1",
-        page: "ОСАГО / КАСКО / Ипотека / Микрозаймы",
-        block: "Типовые преимущества",
-        url: "https://insapp.ru/mortgage/",
-        image: "audit-mortgage.png",
-        pos: "pos-product-top",
-        mark: "mark-mid",
-        now: "Стабильные выплаты. Платим вознаграждение партнерам. Высокий доход. Зарабатывайте до 60% от суммы проданных страховок.",
-        replace: "Стабильная работа. Все заявки и статусы доступны в личном кабинете. Быстрый запуск. Подключайте виджет, API или лендинг для приема онлайн-заявок.",
-        reason: "Типовой блок повторяет риск по вознаграждению и продажам."
-      },
-      {
-        id: 10,
-        priority: "p2",
-        page: "Футер / меню",
-        block: "Футер / меню",
-        url: "https://insapp.ru/",
-        image: "audit-main.png",
-        pos: "pos-main-low",
-        mark: "mark-low",
-        now: "Партнерская программа. Партнерам.",
-        replace: "Интеграции / Подключение ИТ-сервиса",
-        reason: "Навигация тоже должна поддерживать ИТ-позиционирование."
-      },
-      {
-        id: 16,
-        priority: "p2",
-        page: "Блог: виджет ОСАГО",
-        block: "Статья",
-        url: "https://insapp.ru/blog/vidzhet-kalkulyatora-osago-novyy-sposob-zarabotka-na-vashem-sayte/",
-        image: "audit-osago.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Виджет калькулятора ОСАГО: новый способ заработка на вашем сайте. Партнеры могут пользоваться возможностью зарабатывать на выплатах с каждой проданной страховки.",
-        replace: "Виджет калькулятора ОСАГО для вашего сайта. Подключите онлайн-расчет и оформление заявки через сайт.",
-        reason: "Убрать “способ заработка” и выплаты с проданной страховки."
-      },
-      {
-        id: 17,
-        priority: "p2",
-        page: "Блог: выбор партнерской программы",
-        block: "Статья",
-        url: "https://insapp.ru/blog/kak-gramotno-vybrat-partnerskuyu-programmu-po-strakhovaniyu/",
-        image: "audit-partner.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Пассивный заработок и способ монетизировать аудиторию. Партнерское вознаграждение может достигать 40% от суммы каждой проданной страховки.",
-        replace: "Как выбрать страховой виджет для сайта. Онлайн-сервис помогает пользователям выполнить расчет и отправить заявку онлайн.",
-        reason: "Статья должна быть про выбор виджета, а не партнерское вознаграждение."
-      },
-      {
-        id: 18,
-        priority: "p2",
-        page: "Блог: страховые и фин. инструменты",
-        block: "Статья",
-        url: "https://insapp.ru/blog/finansovye-i-strakhovye-instrumenty-dlya-dopolnitelnogo-zarabotka/",
-        image: "audit-main.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Финансовые и страховые инструменты для дополнительного заработка. Монетизация клиентского трафика. Сумма вознаграждения зависит от сделки.",
-        replace: "Финансовые и страховые сервисы для вашего сайта. Онлайн-заявки от пользователей. Условия оформления определяет организация, оказывающая финансовую услугу.",
-        reason: "Заработок, трафик и вознаграждение лучше заменить на онлайн-заявки и роль финансовой организации."
-      },
-      {
-        id: 19,
-        priority: "p2",
-        page: "Блог: страховое предпринимательство",
-        block: "Статья",
-        url: "https://insapp.ru/blog/strakhovoe-predprinimatelstvo-plyusy-i-minusy-riski-i-vozmozhnye-slozhnosti/",
-        image: "audit-kasko.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Страховое предпринимательство, брокеры и агенты, доход, вознаграждение и комиссия за страховые услуги.",
-        replace: "ИТ-инструменты для сайтов и приложений в страховой тематике. Сервис помогает подключить онлайн-расчеты, формы заявок, статусы обращений и обмен структурированными данными со страховыми организациями.",
-        reason: "Тему агентов, брокеров и комиссий переводим в ИТ-инструменты."
-      },
-      {
-        id: 20,
-        priority: "p2",
-        page: "Блог: продажа ОСАГО как бизнес",
-        block: "Статья",
-        url: "https://insapp.ru/blog/prodazha-osago-dlya-avtomobiley-kak-strakhovoy-biznes/",
-        image: "audit-osago.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Продажа ОСАГО как страховой бизнес, агенты, брокеры, комиссия и выгода с каждого проданного полиса.",
-        replace: "Онлайн-расчет ОСАГО для сайтов и приложений. Виджет и API помогают пользователям выполнить расчет, отправить заявку онлайн и отслеживать статус обращения в личном кабинете.",
-        reason: "Заменить предпринимательскую/агентскую рамку на онлайн-расчет, заявку и статус обращения."
-      },
-      {
-        id: 21,
-        priority: "p2",
-        page: "Блог: виджет ипотечного страхования",
-        block: "Статья",
-        url: "https://insapp.ru/blog/vidzhet-ipotechnogo-strakhovaniya-dlya-saytov-i-prilozheniy/",
-        image: "audit-mortgage.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Виджет для продажи полисов ипотечного страхования, доходность, агенты, заработок и продажа полисов.",
-        replace: "Виджет ипотечного страхования для сайтов и приложений. Онлайн-сервис помогает пользователям рассчитать условия и отправить заявку, а партнерам - подключить техническую интеграцию через виджет или API.",
-        reason: "Оставить виджет и интеграцию, убрать продажу полисов, доходность и агентскую лексику."
-      },
-      {
-        id: 22,
-        priority: "p2",
-        page: "Блог: виджет КАСКО",
-        block: "Статья",
-        url: "https://insapp.ru/blog/vidzhet-kalkulyatora-kasko-prostoy-sposob-monetizirovat-posetiteley-vashego-sayta/",
-        image: "audit-kasko.png",
-        pos: "pos-blog-mid",
-        mark: "mark-wide",
-        now: "Виджет КАСКО как способ монетизировать сайт, продажа страховок онлайн, прибыль и покупка полиса через виджет.",
-        replace: "Виджет калькулятора КАСКО для сайта. Онлайн-сервис помогает пользователям выполнить предварительный расчет и отправить заявку через сайт или мобильное приложение.",
-        reason: "Убрать монетизацию, прибыль и продажу страховок; оставить расчет и заявку."
+        group: "legal",
+        priority: "p0",
+        page: "Пользовательское соглашение",
+        block: "Дисклеймер про роль компании",
+        url: "https://insapp.ru/polzovatelskoe-soglashenie/",
+        image: "tz-shot-09-terms.png",
+        now: "У Общества заключены договоры о сотрудничестве в сфере привлечения клиентов.",
+        replace: "Взаимодействие с организациями носит информационно-технологический характер; ООО “ИНСАПП” не является кредитором, страховщиком или платежным агентом, не принимает решения по заявкам и не оказывает финансовые услуги.",
+        reason: "Смысл дисклеймера сохраняем, но убираем формулировку про привлечение клиентов."
       }
     ];
 
@@ -639,29 +507,35 @@
         .replace(/"/g, "&quot;");
     }
 
-    function renderCard(item) {
+    function renderTask(task) {
       return `
-        <article class="change-card ${item.priority}">
-          <div class="shot ${item.pos}">
-            <img src="${item.image}" alt="${escapeHtml(item.page)}: ${escapeHtml(item.block)}">
+        <article class="task ${task.priority}">
+          <div class="shot">
+            <img src="${escapeHtml(task.image)}" alt="${escapeHtml(task.page)}: ${escapeHtml(task.block)}">
           </div>
-          <div class="change-body">
-            <h3><span class="num">${item.id}</span>${escapeHtml(item.page)}: ${escapeHtml(item.block)}</h3>
-            <a class="page-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Ссылка на страницу</a>
+          <div>
+            <div class="task-head">
+              <span class="num">${task.id}</span>
+              <div>
+                <h3>${escapeHtml(task.page)}: ${escapeHtml(task.block)}</h3>
+                <div class="meta"><a href="${escapeHtml(task.url)}" target="_blank" rel="noopener noreferrer">Открыть страницу</a></div>
+              </div>
+            </div>
+            <p>${escapeHtml(task.reason)}</p>
             <div class="from-to">
-              <div class="text-box from"><strong>Сейчас</strong>${escapeHtml(item.now)}</div>
-              <div class="text-box to"><strong>Заменить на</strong>${escapeHtml(item.replace)}</div>
+              <div class="box from"><strong>Сейчас</strong>${escapeHtml(task.now)}</div>
+              <div class="box to"><strong>Заменить на</strong>${escapeHtml(task.replace)}</div>
             </div>
           </div>
         </article>
       `;
     }
 
-    ["p0", "p1", "p2"].forEach((priority) => {
-      const container = document.querySelector(`[data-priority="${priority}"]`);
-      container.innerHTML = changes
-        .filter((item) => item.priority === priority)
-        .map(renderCard)
+    document.querySelectorAll("[data-group]").forEach((container) => {
+      const group = container.getAttribute("data-group");
+      container.innerHTML = tasks
+        .filter((task) => task.group === group)
+        .map(renderTask)
         .join("");
     });
   </script>
