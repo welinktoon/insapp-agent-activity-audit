@@ -177,33 +177,6 @@
     .pos-blog-mid img { object-position: center 45%; }
     .pos-terms img { object-position: center 22%; }
 
-    .marker {
-      position: absolute;
-      left: 6%;
-      top: 11%;
-      width: 88%;
-      height: 24%;
-      border: 3px solid var(--red);
-      border-radius: 8px;
-      background: rgba(197, 48, 48, .10);
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, .82);
-    }
-
-    .marker.p1 {
-      border-color: var(--orange);
-      background: rgba(178, 91, 0, .10);
-    }
-
-    .marker.p2 {
-      border-color: var(--blue);
-      background: rgba(21, 91, 216, .10);
-    }
-
-    .mark-short { left: 9%; top: 12%; width: 76%; height: 18%; }
-    .mark-mid { left: 5%; top: 39%; width: 90%; height: 26%; }
-    .mark-low { left: 5%; top: 57%; width: 90%; height: 24%; }
-    .mark-wide { left: 4%; top: 8%; width: 92%; height: 30%; }
-
     .change-body h3 {
       display: flex;
       align-items: center;
@@ -234,13 +207,6 @@
 
     .change-card.p1 .num {
       background: var(--orange);
-    }
-
-    .place {
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
     }
 
     .page-link {
@@ -678,12 +644,10 @@
         <article class="change-card ${item.priority}">
           <div class="shot ${item.pos}">
             <img src="${item.image}" alt="${escapeHtml(item.page)}: ${escapeHtml(item.block)}">
-            <span class="marker ${item.priority} ${item.mark}"></span>
           </div>
           <div class="change-body">
             <h3><span class="num">${item.id}</span>${escapeHtml(item.page)}: ${escapeHtml(item.block)}</h3>
-            <div class="place">${escapeHtml(item.page)} · ${escapeHtml(item.block)}</div>
-            <a class="page-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Открыть страницу для правки</a>
+            <a class="page-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Ссылка на страницу</a>
             <div class="from-to">
               <div class="text-box from"><strong>Сейчас</strong>${escapeHtml(item.now)}</div>
               <div class="text-box to"><strong>Заменить на</strong>${escapeHtml(item.replace)}</div>
