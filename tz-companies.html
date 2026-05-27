@@ -297,6 +297,50 @@
       font-weight: 700;
     }
 
+    .company-table {
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid #bfe8cf;
+      border-radius: 7px;
+      background: #fff;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .company-table th,
+    .company-table td {
+      padding: 10px;
+      border-bottom: 1px solid #d9efe1;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .company-table th {
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+
+    .company-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .company-table .col-number {
+      width: 72px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .company-table .col-name {
+      width: 38%;
+      font-weight: 700;
+    }
+
     .note {
       margin-top: 16px;
       padding: 14px;
@@ -370,10 +414,22 @@
           <article class="change-card new-company">
             <h3><span class="num">3</span>Новая страховая компания</h3>
             <p>Добавить новую строку после текущей строки 21.</p>
-            <div class="from-to">
-              <div class="to">22. АО СК "ДВАДЦАТЬ ПЕРВЫЙ ВЕК"</div>
-              <div class="to">190000, г. Санкт-Петербург, пр-кт Литейный, д. 57А, литера А</div>
-            </div>
+            <table class="company-table">
+              <thead>
+                <tr>
+                  <th>Номер</th>
+                  <th>Наименование</th>
+                  <th>Адрес</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-number">22</td>
+                  <td class="col-name">АО СК "ДВАДЦАТЬ ПЕРВЫЙ ВЕК"</td>
+                  <td>190000, г. Санкт-Петербург, пр-кт Литейный, д. 57А, литера А</td>
+                </tr>
+              </tbody>
+            </table>
           </article>
         </div>
       </div>
