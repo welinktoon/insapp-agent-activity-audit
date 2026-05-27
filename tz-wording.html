@@ -243,6 +243,18 @@
       font-weight: 700;
     }
 
+    .page-link {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 700;
+      overflow-wrap: anywhere;
+    }
+
     .from-to {
       display: grid;
       gap: 8px;
@@ -671,6 +683,7 @@
           <div class="change-body">
             <h3><span class="num">${item.id}</span>${escapeHtml(item.page)}: ${escapeHtml(item.block)}</h3>
             <div class="place">${escapeHtml(item.page)} · ${escapeHtml(item.block)}</div>
+            <a class="page-link" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">Открыть страницу для правки</a>
             <div class="from-to">
               <div class="text-box from"><strong>Сейчас</strong>${escapeHtml(item.now)}</div>
               <div class="text-box to"><strong>Заменить на</strong>${escapeHtml(item.replace)}</div>
