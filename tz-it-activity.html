@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ТЗ: правки страницы IT-деятельность Insapp</title>
+  <title>ТЗ: страница IT-деятельность Insapp</title>
   <style>
     :root {
       --text: #172033;
@@ -15,10 +15,10 @@
       --blue: #155bd8;
       --blue-soft: #eef4ff;
       --orange: #b25b00;
-      --orange-soft: #fff6e6;
+      --orange-soft: #fff8e8;
       --green: #087443;
       --green-soft: #effaf4;
-      --red: #c53030;
+      --gray-soft: #f3f5f8;
     }
 
     * {
@@ -30,11 +30,11 @@
       background: var(--bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
     main {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 28px auto;
     }
 
@@ -50,12 +50,13 @@
     h1,
     h2,
     h3,
+    h4,
     p {
       margin-top: 0;
     }
 
     h1 {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       font-size: 30px;
       line-height: 1.2;
     }
@@ -67,9 +68,18 @@
     }
 
     h3 {
-      margin-bottom: 8px;
-      font-size: 17px;
-      line-height: 1.25;
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 1.3;
+    }
+
+    h4 {
+      margin: 18px 0 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
     }
 
     a {
@@ -78,215 +88,92 @@
 
     code {
       padding: 2px 6px;
+      border: 1px solid var(--line);
       border-radius: 5px;
       background: #edf1f7;
       font-family: Consolas, "Courier New", monospace;
       font-size: .95em;
     }
 
-    .eyebrow {
-      margin-bottom: 8px;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
     .lead {
-      max-width: 900px;
+      max-width: 920px;
       margin-bottom: 0;
       color: var(--muted);
       font-size: 16px;
     }
 
-    .change-card,
+    .structure {
+      display: grid;
+      gap: 14px;
+    }
+
+    .page-section {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .page-section.new {
+      border-color: #bfe8cf;
+      background: var(--green-soft);
+    }
+
+    .page-section.changed {
+      border-color: #f1d39a;
+      background: var(--orange-soft);
+    }
+
+    .page-section.kept {
+      border-style: dashed;
+      background: var(--gray-soft);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 3px 8px;
+      border-radius: 5px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .new .tag {
+      color: var(--green);
+    }
+
+    .changed .tag {
+      color: var(--orange);
+    }
+
+    .page-h {
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(102, 112, 133, .2);
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .page-section p {
+      margin-bottom: 8px;
+    }
+
+    .page-section p:last-child {
+      margin-bottom: 0;
+    }
+
     .checklist {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--soft);
       padding: 14px;
-    }
-
-    .change-card > span {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .03em;
-      text-transform: uppercase;
-    }
-
-    .board {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(330px, .65fr);
-      gap: 18px;
-      align-items: start;
-    }
-
-    .screen-stack,
-    .changes {
-      display: grid;
-      gap: 12px;
-    }
-
-    .screen-wrap {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .screen-wrap img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .mark {
-      position: absolute;
-      border: 3px solid var(--orange);
-      border-radius: 6px;
-      background: rgba(178, 91, 0, .10);
-      box-shadow: 0 0 0 2px rgba(255, 255, 255, .75);
-    }
-
-    .mark.add {
-      border-style: dashed;
-      border-color: var(--green);
-      background: rgba(8, 116, 67, .10);
-    }
-
-    .badge,
-    .num {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      border: 3px solid #fff;
-      color: #fff;
-      font-weight: 800;
-      line-height: 1;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .24);
-    }
-
-    .badge {
-      position: absolute;
-      left: 8px;
-      top: 8px;
-      width: 40px;
-      height: 40px;
-      background: var(--orange);
-      font-size: 19px;
-      z-index: 3;
-    }
-
-    .mark.add .badge {
-      background: var(--green);
-    }
-
-    .mark-requisites {
-      left: 2.5%;
-      top: 18%;
-      width: 88%;
-      height: 70%;
-    }
-
-    .mark-services {
-      left: 2.5%;
-      bottom: 3%;
-      width: 78%;
-      height: 18%;
-    }
-
-    .mark-cost {
-      left: 2.5%;
-      top: 3%;
-      width: 90%;
-      height: 20%;
-    }
-
-    .change-card {
-      background: #fff;
-    }
-
-    .change-card h3 {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .change-card.top {
-      border-left: 4px solid var(--orange);
-      background: var(--orange-soft);
-    }
-
-    .change-card.middle {
-      border-left: 4px solid var(--blue);
-      background: var(--blue-soft);
-    }
-
-    .change-card.bottom {
-      border-left: 4px solid var(--green);
-      background: var(--green-soft);
-    }
-
-    .change-card.extra {
-      border-left: 4px solid var(--red);
-      background: #fff5f5;
-    }
-
-    .num {
-      flex: 0 0 auto;
-      width: 42px;
-      height: 42px;
-      background: var(--blue);
-      font-size: 20px;
-      letter-spacing: 0;
-    }
-
-    .change-card.top .num {
-      background: var(--orange);
-    }
-
-    .change-card.bottom .num {
-      background: var(--green);
-    }
-
-    .change-card.extra .num {
-      background: var(--red);
-    }
-
-    .from-to {
-      display: grid;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .from,
-    .to {
-      border-radius: 7px;
-      padding: 10px;
-    }
-
-    .from {
-      background: #fff;
-      border: 1px solid #ffd6d6;
-      color: #8f1d1d;
-    }
-
-    .to {
-      background: var(--green-soft);
-      border: 1px solid #bfe8cf;
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .checklist {
-      background: var(--soft);
     }
 
     .check {
@@ -311,14 +198,6 @@
       background: #fff;
     }
 
-    .note {
-      margin-top: 16px;
-      padding: 14px;
-      border-left: 4px solid var(--green);
-      border-radius: 8px;
-      background: var(--green-soft);
-    }
-
     @media (max-width: 880px) {
       main {
         width: 100%;
@@ -333,10 +212,6 @@
         padding: 20px 16px;
       }
 
-      .board {
-        grid-template-columns: 1fr;
-      }
-
       h1 {
         font-size: 24px;
         overflow-wrap: anywhere;
@@ -347,143 +222,108 @@
 <body>
   <main>
     <header>
-      <h1>Правки страницы IT-деятельность Insapp</h1>
-      <p class="lead">На скриншотах отмечены места, где нужно внести изменения на странице <a href="https://insapp.ru/it-deyatelnost/" target="_blank" rel="noreferrer">https://insapp.ru/it-deyatelnost/</a>: верхний блок с реквизитами, блок описания услуг и нижний блок стоимости.</p>
-
+      <h1>ТЗ страницы IT-деятельность Insapp</h1>
+      <p class="lead">Финальная версия страницы <a href="https://insapp.ru/it-deyatelnost/" target="_blank" rel="noreferrer">insapp.ru/it-deyatelnost/</a>. Ниже блоки расположены в том порядке, в котором они должны идти на странице сверху вниз, с готовым итоговым текстом для размещения.</p>
     </header>
 
     <section>
-      <h2>Скриншоты с отметками</h2>
-      <div class="board">
-        <div class="screen-stack">
-          <div class="screen-wrap">
-            <img src="it-activity-top.png" alt="Верх страницы IT-деятельность Insapp">
-            <div class="mark mark-requisites"><div class="badge">1</div></div>
-          </div>
+      <h2>Финальная структура страницы (сверху вниз)</h2>
+      <div class="structure">
+        <article class="page-section new">
+          <span class="tag">Новый блок</span>
+          <h3 class="page-h">О сайте</h3>
+          <p>Настоящий сайт <a href="https://insapp.ru">https://insapp.ru</a> является официальным сайтом Общества с ограниченной ответственностью «ИНСАП» в информационно-телекоммуникационной сети «Интернет».</p>
+        </article>
 
-          <div class="screen-wrap">
-            <img src="it-activity-middle.png" alt="Середина страницы IT-деятельность Insapp">
-            <div class="mark mark-services"><div class="badge">2</div></div>
-          </div>
+        <article class="page-section changed">
+          <span class="tag">Заменить текст</span>
+          <h3 class="page-h">Реквизиты и контакты</h3>
+          <p>Полное наименование организации: Общество с ограниченной ответственностью «ИНСАП»<br>
+          Юридический адрес: 115172, г. Москва, ул. Большие Каменщики, д. 1, эт. 2, пом. I, ком. 14<br>
+          ИНН: 7743225416<br>
+          ОГРН: 1177746963063<br>
+          КПП: 770501001<br>
+          Электронная почта: <a href="mailto:support@insapp.ru">support@insapp.ru</a></p>
 
-          <div class="screen-wrap">
-            <img src="it-activity-lower.png" alt="Низ страницы IT-деятельность Insapp">
-            <div class="mark mark-cost add"><div class="badge">3</div></div>
-          </div>
-        </div>
+          <h4>Основной ОКВЭД</h4>
+          <p>62.01 Разработка компьютерного программного обеспечения</p>
 
-        <div class="changes">
-          <article class="change-card top">
-            <h3><span class="num">1</span>Верх страницы: добавить блок «О сайте»</h3>
-            <p>Над реквизитами добавить отдельный информационный блок про принадлежность сайта.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Абзац про официальный сайт находится внутри блока с реквизитами.</div>
-              <div class="to"><strong>Заменить на</strong> Добавить отдельный блок «О сайте» с текстом: «Сайт insapp.ru принадлежит ООО “ИНСАП” и используется для размещения информации о программном комплексе “Инсап”, его функциональных возможностях, условиях предоставления и контактных данных правообладателя».</div>
-            </div>
-          </article>
+          <h4>Дополнительные ОКВЭД</h4>
+          <p>62.02 Деятельность консультативная и работы в области компьютерных технологий<br>
+          62.02.1 Деятельность по планированию, проектированию компьютерных систем<br>
+          62.02.4 Деятельность по подготовке компьютерных систем к эксплуатации<br>
+          62.03.13 Деятельность по сопровождению компьютерных систем<br>
+          62.09 Деятельность, связанная с использованием вычислительной техники и информационных технологий, прочая<br>
+          63.11.1 Деятельность по созданию и использованию баз данных и информационных ресурсов<br>
+          72.19 Научные исследования и разработки в области естественных и технических наук прочие</p>
+        </article>
 
-          <article class="change-card top">
-            <h3><span class="num">2</span>Верх страницы: переименовать заголовок</h3>
-            <p>В блоке реквизитов поменять только заголовок.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Заголовок блока: «Реквизиты».</div>
-              <div class="to"><strong>Заменить на</strong> Заголовок блока: «Реквизиты и контакты».</div>
-            </div>
-          </article>
+        <article class="page-section kept">
+          <span class="tag">Оставить как есть</span>
+          <h3 class="page-h">Виды ИТ-деятельности</h3>
+          <p>1.01 Проектирование, разработка, адаптация, модификация, внедрение, сопровождение, тестирование, техническая поддержка и эксплуатация программ для ЭВМ, баз данных и пользовательских интерфейсов.</p>
+          <p>2.01 Реализация собственных программ для ЭВМ и баз данных, включая предоставление прав использования и удалённого доступа к программному обеспечению посредством сети Интернет.</p>
+        </article>
 
-          <article class="change-card top">
-            <h3><span class="num">3</span>Верх страницы: убрать абзац из реквизитов</h3>
-            <p>Текст про официальный сайт не должен дублироваться в реквизитах после добавления блока «О сайте».</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Внутри блока «Реквизиты» есть абзац про официальный сайт insapp.ru.</div>
-              <div class="to"><strong>Заменить на</strong> Убрать этот абзац из блока реквизитов. Его смысл остается только в новом блоке «О сайте».</div>
-            </div>
-          </article>
+        <article class="page-section kept">
+          <span class="tag">Оставить как есть</span>
+          <h3 class="page-h">Доля дохода от ИТ-деятельности</h3>
+          <p>Более 70% выручки ООО «ИНСАП» формируется за счёт деятельности в области информационных технологий.</p>
+          <p>Сведения о бухгалтерской (финансовой) отчётности организации доступны на государственном информационном ресурсе бухгалтерской отчётности ФНС России: <a href="#">БФО ФНС России</a>.</p>
+        </article>
 
-          <article class="change-card top">
-            <h3><span class="num">4</span>Верх страницы: добавить email</h3>
-            <p>В реквизиты и контакты добавить электронную почту.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> В блоке реквизитов нет отдельной строки с электронной почтой.</div>
-              <div class="to"><strong>Заменить на</strong> После строки с КПП добавить строку: «Электронная почта: support@insapp.ru».</div>
-            </div>
-          </article>
+        <article class="page-section changed">
+          <span class="tag">Заменить текст</span>
+          <h3 class="page-h">Информация о правах на ПО и способах предоставления</h3>
+          <p>ООО «ИНСАП» является правообладателем используемого и разрабатываемого программного обеспечения. Программное обеспечение предоставляется на условиях лицензионных договоров, по модели «программное обеспечение как услуга» (SaaS), подключение - через автоматизированный программный интерфейс (REST API) или встраиваемый программный модуль.</p>
+        </article>
 
-          <article class="change-card middle">
-            <h3><span class="num">5</span>Описание услуг: переименовать заголовок</h3>
-            <p>Поменять название блока на более точное для страницы IT-деятельности.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Заголовок блока: «Описание услуг».</div>
-              <div class="to"><strong>Заменить на</strong> Заголовок блока: «Функциональные возможности ПО».</div>
-            </div>
-          </article>
+        <article class="page-section kept">
+          <span class="tag">Оставить как есть</span>
+          <h3 class="page-h">Сведения о программном обеспечении</h3>
+          <p>ООО «ИНСАП» является правообладателем программного обеспечения «Инсап» (предыдущее/альтернативное наименование: Insapp), включённого в единый реестр российских программ для ЭВМ и баз данных. Сведения о программном обеспечении размещены в <a href="#">официальном реестре российского ПО Минцифры России</a>: реестровая запись № 29182 от 20.08.2025.</p>
+        </article>
 
-          <article class="change-card middle">
-            <h3><span class="num">6</span>Описание услуг: заменить текст блока</h3>
-            <p>Коммерческое описание заменить на описание функций программного комплекса.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Текст блока выглядит как описание коммерческих услуг.</div>
-              <div class="to"><strong>Заменить на</strong> Текст блока: «Программный комплекс “Инсап” помогает подключать на сайты и в приложения онлайн-расчеты, формы заявок, виджеты, API-интеграции, личный кабинет и статусы обращений. ПО обеспечивает прием, обработку и передачу структурированных данных между пользователем сайта и подключенными организациями».</div>
-            </div>
-          </article>
+        <article class="page-section changed">
+          <span class="tag">Заменить текст</span>
+          <h3 class="page-h">Технологический стек</h3>
+          <p>C#, TypeScript, JavaScript, .NET, ASP.NET Core, PostgreSQL, Valkey, Docker, Linux и Nginx</p>
+        </article>
 
-          <article class="change-card bottom">
-            <h3><span class="num">7</span>Стоимость: добавить блок на странице</h3>
-            <p>Стоимость должна быть указана на странице IT-деятельности.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Отдельного блока стоимости на странице нет.</div>
-              <div class="to"><strong>Заменить на</strong> Добавить на этой странице отдельный блок «Стоимость» с текстом: «Стоимость лицензии на использование программного комплекса “Инсап” - от 50 000 рублей в месяц».</div>
-            </div>
-          </article>
+        <article class="page-section changed">
+          <span class="tag">Заменить текст</span>
+          <h3 class="page-h">Функциональные возможности ПО</h3>
+          <p>«Инсап» - программный комплекс для технической интеграции информационных систем страховых организаций (страховщиков по ОСАГО, КАСКО, ипотечному страхованию) и финансовых организаций (банков, микрофинансовых организаций) с информационными системами партнёрских платформ. Программный комплекс реализует единый протокол обмена структурированными данными между информационными системами сторон интеграции: программное преобразование запросов в индивидуальные форматы информационных систем-получателей, нормализация ответных сообщений к единой схеме, единый программный интерфейс обмена данными для партнёрской организации.</p>
+          <p>Партнёрами программного комплекса «Инсап» выступают банки, крупные цифровые экосистемы, а также другие цифровые платформы различных отраслей, использующие программный интерфейс «Инсап» для технической интеграции своих информационных систем с подключёнными страховыми и финансовыми организациями.</p>
+        </article>
 
-          <article class="change-card bottom">
-            <h3><span class="num">8</span>Стоимость: убрать ссылку на /partner/</h3>
-            <p>В блоке стоимости не должно быть перехода на партнерскую страницу.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Для стоимости используется ссылка на /partner/.</div>
-              <div class="to"><strong>Заменить на</strong> Убрать ссылку на /partner/ из этого места. Стоимость показывать прямо на странице /it-deyatelnost/.</div>
-            </div>
-          </article>
+        <article class="page-section new">
+          <span class="tag">Новый блок</span>
+          <h3 class="page-h">Стоимость</h3>
+          <p>Стоимость лицензии на использование программного комплекса «Инсап» - от 50 000 рублей в месяц. Итоговая стоимость определяется по соглашению сторон с учётом объёма передаваемых данных, количества подключённых информационных систем и состава используемых модулей.</p>
+        </article>
 
-          <article class="change-card extra">
-            <h3><span class="num">9</span>Права на ПО</h3>
-            <p>В блоке про способы предоставления уточнить SaaS бизнес-языком.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> В блоке про способы предоставления используется короткая формулировка «SaaS».</div>
-              <div class="to"><strong>Заменить на</strong> Использовать формулировку: «программное обеспечение как услуга (SaaS)». Если рядом есть поясняющий текст, писать так: «Программный комплекс предоставляется как программное обеспечение как услуга (SaaS), без передачи исключительных прав на ПО».</div>
-            </div>
-          </article>
-
-          <article class="change-card extra">
-            <h3><span class="num">10</span>Технологический стек</h3>
-            <p>Актуализировать стек.</p>
-            <div class="from-to">
-              <div class="from"><strong>Сейчас</strong> Технологический стек: C#, TypeScript, JavaScript, .NET, ASP.NET Core, PostgreSQL, Redis, Node.js, Docker, Linux и Nginx.</div>
-              <div class="to"><strong>Заменить на</strong> Технологический стек: C#, TypeScript, JavaScript, .NET, ASP.NET Core, PostgreSQL, Valkey, Docker, Linux и Nginx.</div>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      <div class="note">
-        Менять только указанные блоки. Остальные юридические формулировки, реквизиты, ИНН, ОГРН и сведения об аккредитации не трогать.
+        <article class="page-section kept">
+          <span class="tag">Оставить как есть</span>
+          <h3 class="page-h">Сведения о государственной аккредитации</h3>
+          <p>ООО «ИНСАП» включено в реестр аккредитованных российских организаций, осуществляющих деятельность в области информационных технологий. Проверить сведения можно на официальном сервисе Госуслуг <a href="#">«Реестр аккредитованных ИТ-компаний»</a>. Данные для проверки: Общество с ограниченной ответственностью «ИНСАП», ИНН 7743225416.</p>
+        </article>
       </div>
     </section>
 
     <section>
       <h2>Чек-лист правок</h2>
       <div class="checklist">
-        <div class="check"><div class="box"></div><div>Добавить сверху новый блок <strong>«О сайте»</strong> с абзацем про принадлежность сайта ООО «ИНСАП».</div></div>
-        <div class="check"><div class="box"></div><div><strong>Переименовать «Реквизиты» в «Реквизиты и контакты»</strong>.</div></div>
-        <div class="check"><div class="box"></div><div>Убрать из реквизитов абзац про официальный сайт, потому что он переносится в блок «О сайте».</div></div>
-        <div class="check"><div class="box"></div><div>Добавить строку <strong>«Электронная почта: support@insapp.ru»</strong> после КПП.</div></div>
-        <div class="check"><div class="box"></div><div><strong>Переименовать «Описание услуг» в «Функциональные возможности ПО»</strong>.</div></div>
-        <div class="check"><div class="box"></div><div>Отдельно заменить текст внутри блока «Функциональные возможности ПО» на описание функций программного комплекса.</div></div>
-        <div class="check"><div class="box"></div><div>Добавить блок <strong>«Стоимость»</strong> сразу после «Функциональные возможности ПО».</div></div>
-        <div class="check"><div class="box"></div><div>Убрать из блока стоимости ссылку на <code>/partner/</code>, стоимость показывать прямо на странице <code>/it-deyatelnost/</code>.</div></div>
-        <div class="check"><div class="box"></div><div>В блоке про права на ПО заменить «SaaS» на «программное обеспечение как услуга (SaaS)».</div></div>
-        <div class="check"><div class="box"></div><div>В технологическом стеке убрать <code>Node.js</code>, заменить <code>Redis</code> на <code>Valkey</code>.</div></div>
-        <div class="check"><div class="box"></div><div>В заявлении правки реестра №29182 заменить адрес страницы стоимости с <code>/partner/</code> на <code>/it-deyatelnost/</code>.</div></div>
+        <div class="check"><div class="box"></div><div>Добавить в самый верх страницы новый блок <strong>«О сайте»</strong> с абзацем про принадлежность сайта ООО «ИНСАП».</div></div>
+        <div class="check"><div class="box"></div><div><strong>Переименовать блок «Реквизиты» в «Реквизиты и контакты»</strong>.</div></div>
+        <div class="check"><div class="box"></div><div>Из блока «Реквизиты и контакты» убрать первый абзац про принадлежность сайта, потому что он перенесён в блок «О сайте» выше.</div></div>
+        <div class="check"><div class="box"></div><div>В блоке «Реквизиты и контакты» добавить строку <strong>«Электронная почта: support@insapp.ru»</strong> после КПП.</div></div>
+        <div class="check"><div class="box"></div><div><strong>Переименовать заголовок «Описание услуг» в «Функциональные возможности ПО»</strong> и заменить весь текст блока на новый.</div></div>
+        <div class="check"><div class="box"></div><div>Добавить новый блок <strong>«Стоимость»</strong> сразу после блока «Функциональные возможности ПО».</div></div>
+        <div class="check"><div class="box"></div><div>В блоке «Информация о правах на ПО и способах предоставления» заменить «SaaS» на «программное обеспечение как услуга (SaaS)».</div></div>
+        <div class="check"><div class="box"></div><div>В блоке «Технологический стек» убрать <code>Node.js</code>, заменить <code>Redis</code> на <code>Valkey</code>.</div></div>
+        <div class="check"><div class="box"></div><div>В заявлении правки реестра №29182 изменить адрес страницы со сведениями о стоимости с <code>/partner/</code> на <code>/it-deyatelnost/</code>.</div></div>
+        <div class="check"><div class="box"></div><div>Все остальные блоки оставить без изменений.</div></div>
       </div>
     </section>
   </main>
