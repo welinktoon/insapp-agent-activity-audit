@@ -6,19 +6,21 @@
   <title>ТЗ: правки страницы страховых компаний Insapp</title>
   <style>
     :root {
-      --text: #172033;
+      --text: #1f2937;
       --muted: #667085;
-      --line: #d7deea;
-      --bg: #f4f7fb;
+      --line: #d0d5dd;
+      --bg: #f7f8fa;
       --panel: #ffffff;
-      --soft: #f8fafc;
-      --blue: #155bd8;
-      --blue-soft: #eef4ff;
-      --orange: #b25b00;
-      --orange-soft: #fff6e6;
+      --soft: #f9fafb;
+      --link: #1d4ed8;
+      --neutral: #475467;
+      --neutral-soft: #f2f4f7;
+      --orange: #b54708;
+      --orange-soft: #fff7ed;
       --green: #087443;
-      --green-soft: #effaf4;
-      --red: #c53030;
+      --green-soft: #ecfdf3;
+      --red: #b42318;
+      --red-soft: #fff5f5;
     }
 
     * {
@@ -80,7 +82,7 @@
     }
 
     a {
-      color: var(--blue);
+      color: var(--link);
     }
 
     code {
@@ -110,7 +112,7 @@
     .change-card {
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: var(--soft);
+      background: #fff;
       padding: 14px;
     }
 
@@ -149,14 +151,14 @@
       position: absolute;
       border: 3px solid var(--red);
       border-radius: 6px;
-      background: rgba(197, 48, 48, .08);
+      background: rgba(180, 35, 24, .07);
       box-shadow: 0 0 0 2px rgba(255, 255, 255, .75);
     }
 
     .mark.add {
       border-style: dashed;
       border-color: var(--orange);
-      background: rgba(178, 91, 0, .10);
+      background: rgba(181, 71, 8, .08);
     }
 
     .badge {
@@ -175,7 +177,7 @@
       font-size: 19px;
       font-weight: 800;
       line-height: 1;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .28);
+      box-shadow: 0 6px 16px rgba(16, 24, 40, .22);
       z-index: 3;
     }
 
@@ -222,23 +224,22 @@
       gap: 12px;
     }
 
-    .change-card {
+    .change-card.date,
+    .change-card.address,
+    .change-card.new-company {
       background: #fff;
     }
 
     .change-card.date {
-      border-left: 4px solid var(--blue);
-      background: var(--blue-soft);
+      border-left: 4px solid var(--neutral);
     }
 
     .change-card.address {
       border-left: 4px solid var(--red);
-      background: #fff5f5;
     }
 
     .change-card.new-company {
       border-left: 4px solid var(--orange);
-      background: var(--orange-soft);
     }
 
     .change-card .num {
@@ -251,24 +252,22 @@
       margin: 0;
       border-radius: 50%;
       border: 3px solid #fff;
-      background: var(--blue);
+      background: var(--neutral);
       color: #fff;
       font-size: 20px;
       font-weight: 800;
       line-height: 1;
       letter-spacing: 0;
       text-transform: none;
-      box-shadow: 0 6px 16px rgba(21, 91, 216, .32);
+      box-shadow: 0 6px 16px rgba(16, 24, 40, .18);
     }
 
     .change-card.address .num {
       background: var(--red);
-      box-shadow: 0 6px 16px rgba(197, 48, 48, .30);
     }
 
     .change-card.new-company .num {
       background: var(--orange);
-      box-shadow: 0 6px 16px rgba(178, 91, 0, .32);
     }
 
     .from-to {
@@ -285,14 +284,14 @@
     }
 
     .from {
+      border: 1px solid #f4c7c3;
       background: #fff;
-      border: 1px solid #ffd6d6;
-      color: #8f1d1d;
+      color: #8a1f17;
     }
 
     .to {
+      border: 1px solid #abefc6;
       background: var(--green-soft);
-      border: 1px solid #bfe8cf;
       color: var(--green);
       font-weight: 700;
     }
@@ -302,7 +301,7 @@
       margin-top: 10px;
       border-collapse: collapse;
       overflow: hidden;
-      border: 1px solid #bfe8cf;
+      border: 1px solid var(--line);
       border-radius: 7px;
       background: #fff;
       color: var(--text);
@@ -312,14 +311,14 @@
     .company-table th,
     .company-table td {
       padding: 10px;
-      border-bottom: 1px solid #d9efe1;
+      border-bottom: 1px solid #eaecf0;
       text-align: left;
       vertical-align: top;
     }
 
     .company-table th {
-      background: var(--green-soft);
-      color: var(--green);
+      background: var(--neutral-soft);
+      color: var(--neutral);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: .03em;
@@ -332,6 +331,7 @@
 
     .company-table .col-number {
       width: 72px;
+      color: var(--orange);
       font-weight: 800;
       white-space: nowrap;
     }
@@ -344,9 +344,9 @@
     .note {
       margin-top: 16px;
       padding: 14px;
-      border-left: 4px solid var(--green);
+      border-left: 4px solid var(--orange);
       border-radius: 8px;
-      background: var(--green-soft);
+      background: var(--orange-soft);
     }
 
     @media (max-width: 880px) {
