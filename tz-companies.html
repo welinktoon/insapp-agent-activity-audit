@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ТЗ: правки страницы страховых компаний Insapp</title>
+  <title>ТЗ: правки страниц компаний Insapp</title>
   <style>
     :root {
       --text: #1f2937;
@@ -219,6 +219,20 @@
       height: 3.2%;
     }
 
+    .mark-mfo-title {
+      left: 2.6%;
+      top: 9.3%;
+      width: 78%;
+      height: 4%;
+    }
+
+    .mark-mfo-table {
+      left: 2.6%;
+      top: 12.5%;
+      width: 94.8%;
+      height: 45%;
+    }
+
     .changes {
       display: grid;
       gap: 12px;
@@ -369,13 +383,14 @@
 <body>
   <main>
     <header>
-      <h1>Правки страницы страховых компаний Insapp</h1>
-      <p class="lead">На скриншоте отмечены места, где нужно внести изменения на странице <a href="https://insapp.ru/companies/" target="_blank" rel="noreferrer">https://insapp.ru/companies/</a>: дата редакции, адрес текущей СК и новая строка в списке.</p>
+      <h1>Правки страниц компаний Insapp</h1>
+      <p class="lead">ТЗ состоит из двух частей: правки страницы страховых компаний <a href="https://insapp.ru/companies/" target="_blank" rel="noreferrer">https://insapp.ru/companies/</a> и актуализация страницы финансовых организаций <a href="https://insapp.ru/companies-mfo/" target="_blank" rel="noreferrer">https://insapp.ru/companies-mfo/</a>.</p>
 
     </header>
 
     <section>
-      <h2>Скриншот с отметками</h2>
+      <p class="eyebrow">Часть 1</p>
+      <h2>Страховые компании: скриншот с отметками</h2>
       <div class="board">
         <div class="screen-wrap">
           <img src="insapp-companies-page.png" alt="Скриншот страницы списка страховых компаний Insapp">
@@ -419,6 +434,133 @@
                   <td class="col-number">22</td>
                   <td class="col-name">АО СК "ДВАДЦАТЬ ПЕРВЫЙ ВЕК"</td>
                   <td>190000, г. Санкт-Петербург, пр-кт Литейный, д. 57А, литера А</td>
+                </tr>
+              </tbody>
+            </table>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">Часть 2</p>
+      <h2>Финансовые организации МФО: скриншот и список</h2>
+      <div class="board">
+        <div class="screen-wrap">
+          <img src="insapp-companies-mfo-page.png" alt="Скриншот страницы списка финансовых организаций Insapp">
+          <div class="mark mark-mfo-title"><div class="badge">1</div></div>
+          <div class="mark mark-mfo-table add"><div class="badge">2</div></div>
+        </div>
+
+        <div class="changes">
+          <article class="change-card date">
+            <h3><span class="num">1</span>Заголовок страницы</h3>
+            <p>Оставить формулировку заголовка страницы финансовых организаций и дату редакции.</p>
+            <div class="to">Список финансовых организаций - партнеров ООО "ИНСАП" (редакция 29.09.2025 года)</div>
+          </article>
+
+          <article class="change-card new-company">
+            <h3><span class="num">2</span>Список финансовых организаций</h3>
+            <p>На странице должен быть список МФО ниже. Если в текущей таблице есть другие организации или старые реквизиты, заменить на этот набор.</p>
+            <table class="company-table">
+              <thead>
+                <tr>
+                  <th>№</th>
+                  <th>Наименование ЮЛ</th>
+                  <th>ИНН</th>
+                  <th>Юр. адрес</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-number">1</td>
+                  <td class="col-name">ООО МФК "САММИТ"</td>
+                  <td>7728771940</td>
+                  <td>123007, г. Москва, ш. Хорошёвское, д. 35, к. 1, кабинет 20</td>
+                </tr>
+                <tr>
+                  <td class="col-number">2</td>
+                  <td class="col-name">ООО МФК "КАРАНГА"</td>
+                  <td>5405060085</td>
+                  <td>630102, Новосибирская обл., г. Новосибирск, ул. Нижегородская, д. 6А</td>
+                </tr>
+                <tr>
+                  <td class="col-number">3</td>
+                  <td class="col-name">ООО МФК "ПСБ ФИНАНС"</td>
+                  <td>7730634468</td>
+                  <td>119019, г. Москва, ул. Воздвиженка, д. 9, стр. 2, помещ. 1</td>
+                </tr>
+                <tr>
+                  <td class="col-number">4</td>
+                  <td class="col-name">ООО МФК "КЭШДРАЙВ"</td>
+                  <td>7459006240</td>
+                  <td>630007, Новосибирская обл., г. Новосибирск, ул. Коммунистическая, д. 6, этаж 9, помещ. 19</td>
+                </tr>
+                <tr>
+                  <td class="col-number">5</td>
+                  <td class="col-name">ООО МФК "ЭКСПРЕССДЕНЬГИ"</td>
+                  <td>1215150103</td>
+                  <td>424038, Республика Марий Эл, г. Йошкар-Ола, б-р Чавайна, д. 12А</td>
+                </tr>
+                <tr>
+                  <td class="col-number">6</td>
+                  <td class="col-name">ООО МФК "ЗАЙМ ОНЛАЙН"</td>
+                  <td>7703769314</td>
+                  <td>127083, г. Москва, ул. 8 Марта, д. 1, стр. 12, эт./пом./ком. 10/LVI/2-7</td>
+                </tr>
+                <tr>
+                  <td class="col-number">7</td>
+                  <td class="col-name">ООО МКК "ЦЕНТРОФИНАНС ГРУПП"</td>
+                  <td>2902076410</td>
+                  <td>164514, Архангельская обл., г. Северодвинск, ул. Карла Маркса, д. 46, офис 500</td>
+                </tr>
+                <tr>
+                  <td class="col-number">8</td>
+                  <td class="col-name">ООО МКК "ФИНМОДЕЛЬ"</td>
+                  <td>9721231466</td>
+                  <td>107140, г. Москва, МО Красносельский, ул. Русаковская, д. 13</td>
+                </tr>
+                <tr>
+                  <td class="col-number">9</td>
+                  <td class="col-name">ООО МКК "ФИНАФОР"</td>
+                  <td>9728073836</td>
+                  <td>109380, г. Москва, МО Люблино, ул. Чагинская, д. 4, стр. 13, помещ. 9/3</td>
+                </tr>
+                <tr>
+                  <td class="col-number">10</td>
+                  <td class="col-name">ООО МКК "ДИНАР"</td>
+                  <td>9727079948</td>
+                  <td>107140, г. Москва, МО Красносельский, ул. Русаковская, д. 13</td>
+                </tr>
+                <tr>
+                  <td class="col-number">11</td>
+                  <td class="col-name">ООО МФК "ЭЙРЛОАНС"</td>
+                  <td>7716748537</td>
+                  <td>123112, г. Москва, МО Пресненский, наб. Пресненская, д. 8, стр. 1, помещ. 554М</td>
+                </tr>
+                <tr>
+                  <td class="col-number">12</td>
+                  <td class="col-name">ООО МФК "МАНИ МЕН"</td>
+                  <td>7704784072</td>
+                  <td>121096, г. Москва, ул. Василисы Кожиной, д. 1, офис Д13</td>
+                </tr>
+                <tr>
+                  <td class="col-number">13</td>
+                  <td class="col-name">ООО МКК "М-ДЕНЬГИ"</td>
+                  <td>9703151232</td>
+                  <td>191187, г. Санкт-Петербург, МО Литейный округ, ул. Шпалерная, д. 8, лит. А, помещ. 16-Н, ком. 4</td>
+                </tr>
+                <tr>
+                  <td class="col-number">14</td>
+                  <td class="col-name">ООО МФК "ВЭББАНКИР"</td>
+                  <td>7733812126</td>
+                  <td>125627, г. Москва, ул. Соколово-Мещерская, д. 29, офис 308</td>
+                </tr>
+                <tr>
+                  <td class="col-number">15</td>
+                  <td class="col-name">ООО МФК "МИГКРЕДИТ"</td>
+                  <td>7715825027</td>
+                  <td>127015, г. Москва, МО Бутырский, ул. Большая Новодмитровская, д. 23, стр. 3, помещ. 1/7</td>
                 </tr>
               </tbody>
             </table>
