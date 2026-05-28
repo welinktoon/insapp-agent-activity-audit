@@ -228,19 +228,30 @@
 
     .check {
       display: grid;
-      grid-template-columns: 20px minmax(0, 1fr);
+      grid-template-columns: 22px minmax(0, 1fr);
       gap: 10px;
       align-items: start;
+      cursor: pointer;
+      user-select: none;
     }
 
-    .check::before {
-      content: "";
+    .check input {
       width: 18px;
       height: 18px;
-      margin-top: 3px;
-      border: 1.5px solid var(--muted);
-      border-radius: 4px;
-      background: #fff;
+      margin: 3px 0 0;
+      accent-color: var(--green);
+      cursor: pointer;
+    }
+
+    .check span {
+      transition: color .15s ease, text-decoration-color .15s ease;
+    }
+
+    .check input:checked + span {
+      color: var(--muted);
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #a7b0c0;
     }
 
     @media (max-width: 900px) {
@@ -300,12 +311,14 @@
 
     <section>
       <h2>Чек-лист приемки</h2>
-      <div class="checklist">
-        <div class="check">Каждый текстовый элемент проверен и описан в своем пункте.</div>
-        <div class="check">“Стабильные выплаты” и “Высокий доход” проверяются как разные карточки везде, где они встречаются.</div>
-        <div class="check">Заголовки, подписи, CTA, карточки и шаги размечены как разные области правки.</div>
-        <div class="check">На скрине выделено именно то место, которое нужно исправить.</div>
-        <div class="check">Продуктовые страницы описывают подключение виджета/API, расчет и прием заявок, а не продажу страховых продуктов.</div>
+      <div class="checklist" id="acceptance-checklist">
+        <label class="check"><input type="checkbox" data-check="screenshots"><span>В каждом пункте скриншот показывает именно тот текстовый элемент, который нужно заменить.</span></label>
+        <label class="check"><input type="checkbox" data-check="no-earnings"><span>В новых формулировках нет обещаний заработка, дохода, комиссий, вознаграждений и монетизации аудитории.</span></label>
+        <label class="check"><input type="checkbox" data-check="it-positioning"><span>Новые тексты описывают Insapp как ИТ-сервис: виджет, API, лендинг, онлайн-заявки, расчет, личный кабинет или статусы.</span></label>
+        <label class="check"><input type="checkbox" data-check="no-duplicates"><span>Формулировки не дублируют соседние преимущества вроде “Быстрый старт”.</span></label>
+        <label class="check"><input type="checkbox" data-check="split-cards"><span>“Стабильные выплаты” и “Высокий доход” проверены как разные карточки на главной и продуктовых страницах.</span></label>
+        <label class="check"><input type="checkbox" data-check="product-pages"><span>Продуктовые страницы говорят про расчет и прием заявок, а не про продажу полисов или страховок.</span></label>
+        <label class="check"><input type="checkbox" data-check="excluded"><span>Юридические тексты, блоговые статьи и показатель “500+ млн” не входят в текущий список правок.</span></label>
       </div>
     </section>
   </main>
@@ -556,6 +569,34 @@
         .filter((task) => task.group === group)
         .map(renderTask)
         .join("");
+    });
+
+    const checklistKey = "tz-wording-acceptance";
+
+    function readChecklistState() {
+      try {
+        return JSON.parse(window.localStorage.getItem(checklistKey) || "{}");
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveChecklistState(state) {
+      try {
+        window.localStorage.setItem(checklistKey, JSON.stringify(state));
+      } catch (error) {
+        return;
+      }
+    }
+
+    const savedChecks = readChecklistState();
+
+    document.querySelectorAll("#acceptance-checklist input[type='checkbox']").forEach((checkbox) => {
+      checkbox.checked = Boolean(savedChecks[checkbox.dataset.check]);
+      checkbox.addEventListener("change", () => {
+        savedChecks[checkbox.dataset.check] = checkbox.checked;
+        saveChecklistState(savedChecks);
+      });
     });
   </script>
 </body>
