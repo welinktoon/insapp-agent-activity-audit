@@ -455,21 +455,54 @@
         <div class="changes">
           <article class="change-card date">
             <h3><span class="num">1</span>Заголовок страницы</h3>
-            <p>Оставить формулировку заголовка страницы финансовых организаций и дату редакции.</p>
-            <div class="to">Список финансовых организаций - партнеров ООО "ИНСАП" (редакция 29.09.2025 года)</div>
+            <p>В заголовке страницы заменить дату редакции.</p>
+            <div class="from-to">
+              <div class="from">Было: редакция 29.09.2025 года</div>
+              <div class="to">Стало: редакция 26.05.2026 года</div>
+            </div>
           </article>
 
           <article class="change-card new-company">
             <h3><span class="num">2</span>Список финансовых организаций</h3>
             <p>Привести список МФО к актуальному виду. Ошибочные организации из договорного списка не добавлять в публичный список финансовых организаций.</p>
-            <div class="from-to">
-              <div class="from">
-                Было: ООО МКК "А ДЕНЬГИ"; МФК БЫСТРОДЕНЬГИ (ООО); ООО МКК "БЫСТРОДЕНЬГИ"; ООО "ДЕНУМ ТЕХ"; ООО "МБ МАРКЕТПЛЕЙС"; ООО "МКК НФ"; АО "МКК УФ" / OneClickMoney.
-              </div>
-              <div class="to">
-                Стало: эти организации в список на странице /companies-mfo/ не добавлять.
-              </div>
-            </div>
+            <table class="company-table">
+              <thead>
+                <tr>
+                  <th>Было</th>
+                  <th>Стало</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="col-name">ООО МКК "А ДЕНЬГИ"</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+                <tr>
+                  <td class="col-name">МФК БЫСТРОДЕНЬГИ (ООО)</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+                <tr>
+                  <td class="col-name">ООО МКК "БЫСТРОДЕНЬГИ"</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+                <tr>
+                  <td class="col-name">ООО "ДЕНУМ ТЕХ"</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+                <tr>
+                  <td class="col-name">ООО "МБ МАРКЕТПЛЕЙС"</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+                <tr>
+                  <td class="col-name">ООО "МКК НФ"</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+                <tr>
+                  <td class="col-name">АО "МКК УФ" / OneClickMoney</td>
+                  <td>Не добавлять в список на странице <code>/companies-mfo/</code></td>
+                </tr>
+              </tbody>
+            </table>
             <div class="from-to">
               <div class="from">Было: ООО МКК "ВЭББАНКИР", ИНН 7736364137</div>
               <div class="to">Стало: ООО МФК "ВЭББАНКИР", ИНН 7733812126, адрес: 125627, г. Москва, ул. Соколово-Мещерская, д. 29, офис 308</div>
